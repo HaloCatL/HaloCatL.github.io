@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[快速幂]]></title>
+    <url>%2F2019%2F02%2F17%2F%E5%BF%AB%E9%80%9F%E5%B9%82%2F</url>
+    <content type="text"><![CDATA[求 $a$ 的 $b$ 次方对 $p$ 取模的值。 输入格式三个整数 $a,b,p$ ,在同一行用空格隔开。 输出格式输出一个整数，表示a^b mod p的值。 数据范围$1≤a,b,p≤10^9$ 输入样例：13 2 7 输出样例：12 12345678910111213141516//#define fre yes#include &lt;cstdio&gt;int a, b, n;int main() &#123; scanf("%d %d %d", &amp;a, &amp;b, &amp;n); int res = 1 % n; while(b) &#123; res = res * a * 1ll % n; a = a * a; b &gt;&gt;= 1; &#125; printf("%lld\n", res); return 0;&#125;]]></content>
+      <categories>
+        <category>位运算</category>
+        <category>快速幂</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2019%2F01%2F31%2Fhello-world%2F</url>
     <content type="text"><![CDATA[2019年2月12日，你好，世界！]]></content>
