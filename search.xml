@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[64位整数乘法]]></title>
+    <url>%2F2019%2F02%2F17%2F64%E4%BD%8D%E6%95%B4%E6%95%B0%E4%B9%98%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[求 $a$ 乘 $b$ 对 $p$ 取模的值。 输入格式第一行输入整数$a$，第二行输入整数$b$，第三行输入整数$p$。 输出格式输出一个整数，表示$a*b mod p$的值。 数据范围$1≤a,b,p≤10^18$ 输入样例：13 4 5 输出样例：12 题目题解推导式子等同于 快速幂 只需稍微修改即可，详细看代码 12345678910111213141516//#define fre yes#include &lt;cstdio&gt;int main() &#123; long long a, b, c; scanf("%lld %lld %lld", &amp;a, &amp;b, &amp;c); long long res = 0; while(b) &#123; if(b &amp; 1) res = (res + a) % c; a = (a + a) % c; b &gt;&gt;= 1; &#125; printf("%lld\n", res); return 0;&#125;]]></content>
+      <categories>
+        <category>位运算</category>
+        <category>快速幂</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[快速幂]]></title>
     <url>%2F2019%2F02%2F17%2F%E5%BF%AB%E9%80%9F%E5%B9%82%2F</url>
     <content type="text"><![CDATA[求 $a$ 的 $b$ 次方对 $p$ 取模的值。 输入格式三个整数 $a,b,p$ ,在同一行用空格隔开。 输出格式输出一个整数，表示a^b mod p的值。 数据范围$1≤a,b,p≤10^9$ 输入样例：13 2 7 输出样例：12 题目题解若要直接算 $a^b$ 即计算 $b$ 遍，复杂度就是 $O(n)$ 快速幂的时间复杂度可以将原本 $O(n)$ 的时间复杂度缩短为 $O(logn)$ 基本思想： 原式若为 $a^10$ 那么 原式 = $a ^ {((2 × 1) + (2 × 3))}$ = $a ^ {(2 × 1)} + a ^ {(2 × 3)}$ 为什么将 10 分为关于 2 的式子？ 因为可以将其联系到二进制数 根据二进制数我们可以利用二进数的特点将其的计算量大幅度减少 于是我们可以得出以下代码… 123456789101112131415//#define fre yes#include &lt;cstdio&gt;int main() &#123; static int a, b, p; scanf("%d %d %d", &amp;a, &amp;b, &amp;p); int res = 1 % p; //若 b = 0 p = 1 那么下面计算就不会进行 最后结果不会计算 所以需要%一个 while(b) &#123; if(b &amp; 1) res = (long long)res * a % p; // 中途数据会超long long这里需要转换 a = (long long)a * a % p; b &gt;&gt;= 1; &#125; printf("%d\n", res); return 0;&#125;]]></content>
