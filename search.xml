@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[64位整数乘法]]></title>
     <url>%2F2019%2F02%2F17%2F64%E4%BD%8D%E6%95%B4%E6%95%B0%E4%B9%98%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[求 $a$ 乘 $b$ 对 $p$ 取模的值。 输入格式第一行输入整数$a$，第二行输入整数$b$，第三行输入整数$p$。 输出格式输出一个整数，表示$a*b mod p$的值。 数据范围$1≤a,b,p≤10^18$ 输入样例：13 4 5 输出样例：12 题目题解推导式子等同于 快速幂 只需稍微修改即可，详细看代码 12345678910111213141516//#define fre yes#include &lt;cstdio&gt;int main() &#123; long long a, b, c; scanf("%lld %lld %lld", &amp;a, &amp;b, &amp;c); long long res = 0; while(b) &#123; if(b &amp; 1) res = (res + a) % c; a = (a + a) % c; b &gt;&gt;= 1; &#125; printf("%lld\n", res); return 0;&#125;]]></content>
+    <content type="text"><![CDATA[求 $a$ 乘 $b$ 对 $p$ 取模的值。 输入格式第一行输入整数$a$，第二行输入整数$b$，第三行输入整数$p$。 输出格式输出一个整数，表示$a*b Mod p$的值。 数据范围$1≤a,b,p≤10^{18}$ 输入样例：13 4 5 输出样例：12 题目题解推导式子等同于 快速幂 只需稍微修改即可，详细看代码 12345678910111213141516//#define fre yes#include &lt;cstdio&gt;int main() &#123; long long a, b, c; scanf("%lld %lld %lld", &amp;a, &amp;b, &amp;c); long long res = 0; while(b) &#123; if(b &amp; 1) res = (res + a) % c; a = (a + a) % c; b &gt;&gt;= 1; &#125; printf("%lld\n", res); return 0;&#125;]]></content>
       <categories>
         <category>位运算</category>
         <category>快速幂</category>
