@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="HaloCat_Blog">
 <meta property="og:description" content="求 $a$ 的 $b$ 次方对 $p$ 取模的值。 输入格式三个整数 $a,b,p$ ,在同一行用空格隔开。 输出格式输出一个整数，表示a^b mod p的值。 数据范围$1≤a,b,p≤10^9$ 输入样例：13 2 7 输出样例：12 题目题解若要直接算 $a^b$ 即计算 $b$ 遍，复杂度就是 $O(n)$ 快速幂的时间复杂度可以将原本 $O(n)$ 的时间复杂度缩短为 $O(logn)$">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-17T10:01:50.361Z">
+<meta property="og:updated_time" content="2019-02-17T10:11:08.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速幂">
 <meta name="twitter:description" content="求 $a$ 的 $b$ 次方对 $p$ 取模的值。 输入格式三个整数 $a,b,p$ ,在同一行用空格隔开。 输出格式输出一个整数，表示a^b mod p的值。 数据范围$1≤a,b,p≤10^9$ 输入样例：13 2 7 输出样例：12 题目题解若要直接算 $a^b$ 即计算 $b$ 遍，复杂度就是 $O(n)$ 快速幂的时间复杂度可以将原本 $O(n)$ 的时间复杂度缩短为 $O(logn)$">
@@ -436,7 +436,7 @@
 <p>快速幂的时间复杂度可以将原本 $O(n)$ 的时间复杂度缩短为 $O(logn)$</p>
 <p><strong>基本思想：</strong></p>
 <p>原式若为 $a^10$</p>
-<p>那么 原式 = $a ^ ((2 × 1) + (2 × 3))$ = $a ^ (2 × 1) + a ^ (2 × 3)$</p>
+<p>那么 原式 = $a ^ {((2 × 1) + (2 × 3))}$ = $a ^ {(2 × 1)} + a ^ {(2 × 3)}$</p>
 <p><strong>为什么将 10 分为关于 2 的式子？</strong></p>
 <p>因为可以将其联系到<strong>二进制数</strong></p>
 <p>根据二进制数我们可以利用二进数的特点将其的计算量大幅度减少</p>
