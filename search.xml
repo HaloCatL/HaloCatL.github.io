@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[最短Hamilton路径]]></title>
+    <url>%2F2019%2F02%2F18%2F%E6%9C%80%E7%9F%ADHamilton%E8%B7%AF%E5%BE%84%2F</url>
+    <content type="text"><![CDATA[给定一张 $n$ 个点的带权无向图，点从 0~n-1 标号，求起点 0 到终点 n-1 的最短Hamilton路径。 Hamilton路径的定义是从 0 到 n-1 不重不漏地经过每个点恰好一次。 输入格式第一行输入整数$n$。 接下来$n$行每行$n$个整数，其中第$i$行第$j$个整数表示点$i$到$j$的距离（记为a[i,j]）。 对于任意的$x,y,z$，数据保证 a[x,x]=0，a[x,y]=a[y,x] 并且 a[x,y]+a[y,z]&gt;=a[x,z]。 输出格式输出一个整数，表示最短Hamilton路径的长度。 数据范围$1≤n≤20$$0≤a[i,j]≤10^7$ 输入样例：12345650 2 4 5 12 0 6 5 34 6 0 8 35 5 8 0 51 3 3 5 0 输出样例：118 题目题解Hamilton路径是一种经典的NP问题，这种问题没有一个有效的多项式进行优化 所以我们可以考虑爆搜，并使用位运算进行计算优化 首先，如果使用爆搜，我们就得遍历所有的可能 这个时间复杂度是 O(20!) 那么就是 2432902008176640000 这么多的时间复杂度 所以我们可以排除爆搜这种做法，那么我们就考虑其他的想法 因为我们要走完所有的路，并且走最短路 我们考虑两种走法 （若此时我们有 $i$ $j$ $k$ 三个点 1：$i$ ——&gt; $j$ 2：$i$ ——&gt; $k$ ——&gt; $j$ 若第二种的路径长度小于第一种，说明我们走下面是最优的，我们 i -&gt; j 的长度就可以变成最优的那个 于是我们就可以推出关系式 $f_{i,j} = min(f_{i,j}, f{i - (1 &lt;&lt; j),k} + weight{k,j})$ 这里的 $i$ 储存的是我们所有点的状态（二进制数），$j$ 表达的是第 $j$ 个点 $k$ 表达的是第 $k$ 个点 （$i$如果是 7[111] 那么 就表示第一、二、三个点都是用过的） 这里的 $i - (1 &lt;&lt; j)$ 就是当前状态是由上一个第$j$个点没有遍历过的状态转移过来的 于是根据上方关系，我们就可以列出代码 12345678910111213141516171819202122232425262728293031323334353637//#define fre yes#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;iostream&gt;const int N = 1 &lt;&lt; 20, M = 25;int f[N][M], weight[M][M];int main() &#123; static int n; scanf("%d", &amp;n); for (int i = 0; i &lt; n; i++) &#123; for (int j = 0; j &lt; n; j++) &#123; scanf("%d", &amp;weight[i][j]); &#125; &#125; memset(f, 0x3f, sizeof(f)); //因为求最小值，我们需要先将路程转为最大值 f[1][0] = 0; for (int i = 0; i &lt; 1 &lt;&lt; n; i++) &#123; //枚举所有状态 for (int j = 0; j &lt; n; j++) &#123; //枚举所有点 if(i &gt;&gt; j &amp; 1) &#123; //如果第j个点遍历过了 for (int k = 0; k &lt; n; k++) &#123; //枚举第k个点 if(i - (1 &lt;&lt; j) &gt;&gt; k &amp; 1) &#123; //如果在状态中减去j之后第k个点依旧遍历到了 f[i][j] = std::min(f[i][j], f[i - (1 &lt;&lt; j)][k] + weight[k][j]); //进行转移方程 &#125; &#125; &#125; &#125; &#125; printf("%d\n", f[(1 &lt;&lt; n) - 1][n - 1]); //因为我们是从0开始记位，所以我们都要-1 return 0;&#125; 注意 这里的$f_{i,j}并不是代表的 $i$ 点到 $j$ 点，而是当前已经到达 $j$ 点时所有点的状态，以及当前走过的最短路径！！]]></content>
+      <categories>
+        <category>位运算</category>
+        <category>状压DP</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[64位整数乘法]]></title>
     <url>%2F2019%2F02%2F17%2F64%E4%BD%8D%E6%95%B4%E6%95%B0%E4%B9%98%E6%B3%95%2F</url>
     <content type="text"><![CDATA[求 $a$ 乘 $b$ 对 $p$ 取模的值。 输入格式第一行输入整数$a$，第二行输入整数$b$，第三行输入整数$p$。 输出格式输出一个整数，表示$a*b Mod p$的值。 数据范围$1≤a,b,p≤10^{18}$ 输入样例：13 4 5 输出样例：12 题目题解推导式子等同于 快速幂 只需稍微修改即可，详细看代码 12345678910111213141516//#define fre yes#include &lt;cstdio&gt;int main() &#123; long long a, b, c; scanf("%lld %lld %lld", &amp;a, &amp;b, &amp;c); long long res = 0; while(b) &#123; if(b &amp; 1) res = (res + a) % c; a = (a + a) % c; b &gt;&gt;= 1; &#125; printf("%lld\n", res); return 0;&#125;]]></content>
@@ -15,7 +27,7 @@
   <entry>
     <title><![CDATA[快速幂]]></title>
     <url>%2F2019%2F02%2F17%2F%E5%BF%AB%E9%80%9F%E5%B9%82%2F</url>
-    <content type="text"><![CDATA[求 $a$ 的 $b$ 次方对 $p$ 取模的值。 输入格式三个整数 $a,b,p$ ,在同一行用空格隔开。 输出格式输出一个整数，表示a^b mod p的值。 数据范围$1≤a,b,p≤10^9$ 输入样例：13 2 7 输出样例：12 题目题解若要直接算 $a^b$ 即计算 $b$ 遍，复杂度就是 $O(n)$ 快速幂的时间复杂度可以将原本 $O(n)$ 的时间复杂度缩短为 $O(logn)$ 基本思想： 原式若为 $a^10$ 那么 原式 = $a ^ {((2 × 1) + (2 × 3))}$ = $a ^ {(2 × 1)} + a ^ {(2 × 3)}$ 为什么将 10 分为关于 2 的式子？ 因为可以将其联系到二进制数 根据二进制数我们可以利用二进数的特点将其的计算量大幅度减少 于是我们可以得出以下代码… 123456789101112131415//#define fre yes#include &lt;cstdio&gt;int main() &#123; static int a, b, p; scanf("%d %d %d", &amp;a, &amp;b, &amp;p); int res = 1 % p; //若 b = 0 p = 1 那么下面计算就不会进行 最后结果不会计算 所以需要%一个 while(b) &#123; if(b &amp; 1) res = (long long)res * a % p; // 中途数据会超long long这里需要转换 a = (long long)a * a % p; b &gt;&gt;= 1; &#125; printf("%d\n", res); return 0;&#125;]]></content>
+    <content type="text"><![CDATA[求 $a$ 的 $b$ 次方对 $p$ 取模的值。 输入格式三个整数 $a,b,p$ ,在同一行用空格隔开。 输出格式输出一个整数，表示a^b mod p的值。 数据范围$1≤a,b,p≤10^9$ 输入样例：13 2 7 输出样例：12 题目题解若要直接算 $a^b$ 即计算 $b$ 遍，复杂度就是 $O(n)$ 快速幂的时间复杂度可以将原本 $O(n)$ 的时间复杂度缩短为 $O(logn)$ 基本思想： 原式若为 $a^{10}$ 那么 原式 = $a ^ {((2 × 1) + (2 × 3))}$ = $a ^ {(2 × 1)} + a ^ {(2 × 3)}$ 为什么将 10 分为关于 2 的式子？ 因为可以将其联系到二进制数 根据二进制数我们可以利用二进数的特点将其的计算量大幅度减少 于是我们可以得出以下代码… 123456789101112131415//#define fre yes#include &lt;cstdio&gt;int main() &#123; static int a, b, p; scanf("%d %d %d", &amp;a, &amp;b, &amp;p); int res = 1 % p; //若 b = 0 p = 1 那么下面计算就不会进行 最后结果不会计算 所以需要%一个 while(b) &#123; if(b &amp; 1) res = (long long)res * a % p; // 中途数据会超long long这里需要转换 a = (long long)a * a % p; b &gt;&gt;= 1; &#125; printf("%d\n", res); return 0;&#125;]]></content>
       <categories>
         <category>位运算</category>
         <category>快速幂</category>
