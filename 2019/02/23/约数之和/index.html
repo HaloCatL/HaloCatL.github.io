@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="HaloCat_Blog">
 <meta property="og:description" content="假设现在有两个自然数A和B，S是$A^B$的所有约数之和。 请你求出S mod 9901的值是多少。 输入格式在一行中输入用空格隔开的两个整数A和B。 输出格式输出一个整数，代表S mod 9901的值。 数据范围$0≤A,B≤5×10^7$ 输入样例：12 3 输出样例：115 注意: A和B不会同时为0。 题目题解：这个题需要三个新知识： 质因数分解任何一个数 $x$ 都能分解为 $x = $">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-25T08:22:31.578Z">
+<meta property="og:updated_time" content="2019-02-25T08:24:59.565Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="约数之和">
 <meta name="twitter:description" content="假设现在有两个自然数A和B，S是$A^B$的所有约数之和。 请你求出S mod 9901的值是多少。 输入格式在一行中输入用空格隔开的两个整数A和B。 输出格式输出一个整数，代表S mod 9901的值。 数据范围$0≤A,B≤5×10^7$ 输入样例：12 3 输出样例：115 注意: A和B不会同时为0。 题目题解：这个题需要三个新知识： 质因数分解任何一个数 $x$ 都能分解为 $x = $">
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  535
+                  558
                 </span>
               
 
@@ -429,11 +429,12 @@
 <p>很好证明，因为$p^n$的约数有$p^0, p^1, p^2, … , p^n$ 即个数为$(n + 1)$</p>
 <h5 id="约数定理"><a href="#约数定理" class="headerlink" title="约数定理"></a>约数定理</h5><p>$n$的$\prod ^n_{i=1}(a_i + 1)$个正约数的和为：</p>
 <p>$\prod ^k_{i = 1}\sum ^k_{j = 0}(p^j_i) $</p>
+<p>因为这样算复杂度太高，我们需要将式子简单化一下。</p>
 <p>对于这道题，约数定理就有 $A^B$ 的约数和为：</p>
 <p>$\prod ^k_{i = 1}\sum ^{k×B}_{j = 0}(p^j_i) $</p>
 <p>定义<code>sum(n, k)</code>为$p^0 + p^1 + … + p^k$，分为两部分的和为</p>
 <p>$(p ^ 0 + … + p^{\frac{k}{2}}) + (p ^ {\frac{k}{2} + 1} + … + p ^ k)$</p>
-<p>右边的式子可以提一个公因数 $p^{\frac{k}{2}}$</p>
+<p>右边的式子可以提一个公因数 $p^{\frac{k}{2}} + 1$</p>
 <p>于是就变成了 $(p ^ 0 + … + p ^ {\frac{k}{2}}) × (p ^ {\frac{k}{2}} + 1)$</p>
 <p>于是就得到了<script type="math/tex">sum(n, \frac{k}{2}) × (p ^ {\frac{k}{2}} + 1)</script></p>
 <p>于是我们只用算后面的式子，前面有递归解决即可</p>
