@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="线性代数,递归,">
 
 
 
@@ -79,13 +79,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="HaloCat_Blog">
-<meta property="og:url" content="http://yoursite.com/categories/动态规划/index.html">
+<meta name="description" content="城市的规划在城市建设中是个大问题。 不幸的是，很多城市在开始建设的时候并没有很好的规划，城市规模扩大之后规划不合理的问题就开始显现。 而这座名为 Fractal 的城市设想了这样的一个规划方案，如下图所示：  当城区规模扩大之后，Fractal 的解决方案是把和原来城区结构一样的区域按照图中的方式建设在城市周围，提升城市的等级。 对于任意等级的城市，我们把正方形街区从左上角开始按照道路标号。 虽然">
+<meta name="keywords" content="线性代数,递归">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分形之城">
+<meta property="og:url" content="http://yoursite.com/2019/02/27/分形之城/index.html">
 <meta property="og:site_name" content="HaloCat_Blog">
+<meta property="og:description" content="城市的规划在城市建设中是个大问题。 不幸的是，很多城市在开始建设的时候并没有很好的规划，城市规模扩大之后规划不合理的问题就开始显现。 而这座名为 Fractal 的城市设想了这样的一个规划方案，如下图所示：  当城区规模扩大之后，Fractal 的解决方案是把和原来城区结构一样的区域按照图中的方式建设在城市周围，提升城市的等级。 对于任意等级的城市，我们把正方形街区从左上角开始按照道路标号。 虽然">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.acwing.com/media/article/image/2019/01/07/19_1ac25efe11-city.png">
+<meta property="og:updated_time" content="2019-03-04T08:55:33.849Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HaloCat_Blog">
+<meta name="twitter:title" content="分形之城">
+<meta name="twitter:description" content="城市的规划在城市建设中是个大问题。 不幸的是，很多城市在开始建设的时候并没有很好的规划，城市规模扩大之后规划不合理的问题就开始显现。 而这座名为 Fractal 的城市设想了这样的一个规划方案，如下图所示：  当城区规模扩大之后，Fractal 的解决方案是把和原来城区结构一样的区域按照图中的方式建设在城市周围，提升城市的等级。 对于任意等级的城市，我们把正方形街区从左上角开始按照道路标号。 虽然">
+<meta name="twitter:image" content="https://www.acwing.com/media/article/image/2019/01/07/19_1ac25efe11-city.png">
 
 
 
@@ -115,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/动态规划/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/27/分形之城/">
 
 
 
 
 
-  <title>分类: 动态规划 | HaloCat_Blog</title>
+  <title>分形之城 | HaloCat_Blog</title>
   
 
 
@@ -140,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -276,53 +283,225 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>动态规划<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/27/分形之城/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaloCat">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HaloCat_Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/02/20/奇怪的汉诺塔/" itemprop="url">
-              
-                <span itemprop="name">奇怪的汉诺塔</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">分形之城</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-20T11:24:10+08:00" content="2019-02-20">
-          02-20
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-27T19:36:02+08:00">
+                2019-02-27
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/递归/" itemprop="url" rel="index">
+                    <span itemprop="name">递归</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>城市的规划在城市建设中是个大问题。</p>
+<p>不幸的是，很多城市在开始建设的时候并没有很好的规划，城市规模扩大之后规划不合理的问题就开始显现。</p>
+<p>而这座名为 Fractal 的城市设想了这样的一个规划方案，如下图所示：</p>
+<p><img src="https://www.acwing.com/media/article/image/2019/01/07/19_1ac25efe11-city.png" alt=""></p>
+<p>当城区规模扩大之后，Fractal 的解决方案是把和原来城区结构一样的区域按照图中的方式建设在城市周围，提升城市的等级。</p>
+<p>对于任意等级的城市，我们把正方形街区从左上角开始按照道路标号。</p>
+<p>虽然这个方案很烂，Fractal 规划部门的人员还是想知道，如果城市发展到了等级 N，编号为 A 和 B 的两个街区的直线距离是多少。</p>
+<p>街区的距离指的是街区的中心点之间的距离，每个街区都是边长为 10 米的正方形。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入正整数$n$，表示测试数据的数目。</p>
+<p>以下$n$行，输入n组测试数据，每组一行。</p>
+<p>每组数据包括三个整数 $N,A,B$ 表示城市等级以及两个街区的编号，整数之间用空格隔开。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>一共输出nn行数据，每行对应一组测试数据的输出结果，结果四舍五入到整数。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>$1≤N≤31$<br>$1≤A,B≤2^{2N},$</p>
+<p>$1≤n≤1000$</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3 </span><br><span class="line">1 1 2 </span><br><span class="line">2 16 1 </span><br><span class="line">3 4 33</span><br></pre></td></tr></table></figure>
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10 </span><br><span class="line">30 </span><br><span class="line">50</span><br></pre></td></tr></table></figure>
+<h4 id="题目题解："><a href="#题目题解：" class="headerlink" title="题目题解："></a>题目题解：</h4><p>题目有点难度，我们先将A, B所代表的坐标表示出来，这样我们就直接用两点间的距离公式将A, B的直线距离算出来。 那么如何求出两个坐标呢？</p>
+<p>首先先观察这个图形的变化吧，我们先定义，一个大正方形 = 4 <em> 中正方形 = 4 </em> （每个中正方形的小正方形），我们又可以得出，每个小正方的数目都是相同的。于是4个中正方形也是相同的，为了方便，我们称一个大正方形为$P$ 一个中正方形为$R$。 我们由上边的结论求出$R$的边长，即$2^{n - 1}$，由此我们可以得到一个中正方形中有多少个小正方形 即 $2^{2(n - 1)}$ （这里的$n$为<strong>城市等级</strong>）</p>
+<p>定义完毕后，我们就回归主题 <strong>图形的变化</strong> 首先是我们解决的方式是 <strong>以大化小</strong> 将一个大等级化成若干个小等级来解决问题，首先我们先得到最小的图形，然后根据图形的规律将其拼出更大的图形，那么首先我们得得到我们的目标点的位置，然后就逐渐缩小目标，这样就可以得到目标点是由最初点（Lv.1）的哪个点旋转得来的，那么我们就可以通过坐标旋转完善图形来找到我们的坐标，这个过程可以通过递归完成。</p>
+<p>关于坐标旋转，可以通过以下公式，这个公式的意义是 使一个<strong>坐标</strong>顺时针旋转$\theta$角，这里是坐标！</p>
+<script type="math/tex; mode=display">(x,y) \cdot \begin{bmatrix}
+cos\theta  & sin\theta\\
+-sin\theta & cos\theta
+\end{bmatrix}</script><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#define fre yes</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::pair&lt;LL, LL&gt; PLL;</span><br><span class="line"></span><br><span class="line"><span class="function">PLL <span class="title">calc</span><span class="params">(LL n, LL m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">0</span>) <span class="keyword">return</span> &#123;<span class="number">0</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    LL len = <span class="number">1l</span>l &lt;&lt; n - <span class="number">1</span>, cnt = <span class="number">1l</span>l &lt;&lt; <span class="number">2</span> * n - <span class="number">2</span>;</span><br><span class="line">    PLL pos = calc(n - <span class="number">1</span>, m % cnt);</span><br><span class="line">    LL x = pos.first, y = pos.second;</span><br><span class="line">    LL z = m / cnt;</span><br><span class="line">    <span class="keyword">if</span>(z == <span class="number">0</span>) <span class="keyword">return</span> &#123;y, x&#125;;</span><br><span class="line">    <span class="keyword">if</span>(z == <span class="number">1</span>) <span class="keyword">return</span> &#123;x, y + len&#125;;</span><br><span class="line">    <span class="keyword">if</span>(z == <span class="number">2</span>) <span class="keyword">return</span> &#123;x + len, y + len&#125;;</span><br><span class="line">    <span class="keyword">if</span>(z == <span class="number">3</span>) <span class="keyword">return</span> &#123;<span class="number">2</span> * len - <span class="number">1</span> - y, len - <span class="number">1</span> - x&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;    </span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        LL N, A, B;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%ld %ld %ld"</span>, &amp;N, &amp;A, &amp;B);</span><br><span class="line">        PLL ac = calc(N, A - <span class="number">1</span>);</span><br><span class="line">        PLL bc = calc(N, B - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">double</span> x = ac.first - bc.first, y = ac.second - bc.second;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%.0lf\n"</span>, <span class="built_in">sqrt</span>(x * x + y * y) * <span class="number">10</span>);</span><br><span class="line">    &#125; <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/线性代数/" rel="tag"># 线性代数</a>
+          
+            <a href="/tags/递归/" rel="tag"># 递归</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/23/约数之和/" rel="next" title="约数之和">
+                <i class="fa fa-chevron-left"></i> 约数之和
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -330,6 +509,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -350,8 +533,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -413,6 +605,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入格式"><span class="nav-number">1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出格式"><span class="nav-number">2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据范围"><span class="nav-number">3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入样例："><span class="nav-number">4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出样例："><span class="nav-number">5.</span> <span class="nav-text">输出样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题目题解："><span class="nav-number">6.</span> <span class="nav-text">题目题解：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -562,6 +770,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
