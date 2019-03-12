@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[IncDec序列]]></title>
+    <url>%2F2019%2F03%2F07%2FIncDec%E5%BA%8F%E5%88%97%2F</url>
+    <content type="text"><![CDATA[给定一个长度为 $n$ 的数列 $a_1,a_2,…,a_n$，每次可以选择一个区间 $[l,r]$，使下标在这个区间内的数都加一或者都减一。 求至少需要多少次操作才能使数列中的所有数都一样，并求出在保证最少次数的前提下，最终得到的数列可能有多少种。 输入格式第一行输入正整数$n$。 接下来$n$行，每行输入一个整数，第i+1行的整数代表$a_i$。 输出格式第一行输出最少操作次数。 第二行输出最终能得到多少种结果。 数据范围$0&lt;n≤10^5$,$0≤a_i&lt;2147483648$ 输入样例：1234541122 输出样例：1212 题目题解差分 12345678910111213141516171819202122232425262728293031//#define fre yes#include &lt;cstdio&gt;#include &lt;iostream&gt;typedef long long LL;const int N = 100005;int a[N];int main() &#123; static int n; scanf("%d", &amp;n); for (int i = 1; i &lt;= n; i++) &#123; scanf("%d", &amp;a[i]); &#125; for (int i = n; i &gt;= 2; i++) &#123; a[i] = a[i] - a[i - 1]; &#125; LL pos = 0, meg = 0; for (int i = 2; i &lt;= n; i++) &#123; if(a[i] &gt; 0) pos += a[i]; else meg -= a[i]; &#125; printf("%lld\n", std::min(meg, pos) + abs(meg - pos)); printf("%lld\n", abs) return 0;&#125;]]></content>
+      <categories>
+        <category>等分</category>
+      </categories>
+      <tags>
+        <tag>差分</tag>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[激光炸弹]]></title>
     <url>%2F2019%2F03%2F06%2F%E6%BF%80%E5%85%89%E7%82%B8%E5%BC%B9%2F</url>
     <content type="text"><![CDATA[一种新型的激光炸弹，可以摧毁一个边长为 $R$ 的正方形内的所有的目标。 现在地图上有 $N$ 个目标，用整数$X_i,Y_i$表示目标在地图上的位置，每个目标都有一个价值$W_i$。 激光炸弹的投放是通过卫星定位的，但其有一个缺点，就是其爆炸范围，即那个边长为 $R$ 的正方形的边必须和$x，y$轴平行。 若目标位于爆破正方形的边上，该目标不会被摧毁。 求一颗炸弹最多能炸掉地图上总价值为多少的目标。 输入格式第一行输入正整数 $N$ 和 $R$ ,分别代表地图上的目标数目和正方形的边长，数据用空格隔开。 接下来$N$行，每行输入一组数据，每组数据包括三个整数$X_i,Y_i,W_i$,分别代表目标的$x$坐标，$y$坐标和价值，数据用空格隔开。 输出格式输出一个正整数，代表一颗炸弹最多能炸掉地图上目标的总价值数目。 数据范围$0&lt;N≤10000$$0≤X_i,Y_i≤5000$ 输入样例：1232 10 0 11 1 1 输出样例：11 题目题解：此题知道一个概念：前缀和 普通一维前缀和 $f[k] = \sum _{i = 1}^{k}f[i]$ 那么二维前缀和如何求呢？ 请看图片 如果我们要求右下角的点的前缀和，我们就用 整个大矩形 - 两个红矩形 + 一个蓝矩形 即 $f_{i,j} = f_{i, j} - f_{i - R, j} - f_{i, j - R} + f_{i - R, j - R}$ 然后就能算我们的答案了。 记住，这里的爆炸矩形的边角所取的点可以不在整个大矩形上，也可以在大矩形中的小矩形内。 123456789101112131415161718192021222324252627282930313233//#define fre yes#include &lt;cstdio&gt;#include &lt;iostream&gt;const int N = 5005;int g[N][N];int main() &#123; static int N, R; scanf("%d %d", &amp;N, &amp;R); int n = R, m = R; for (int i = 0, x, y, w; i &lt; N; i++) &#123; scanf("%d %d %d", &amp;x, &amp;y, &amp;w); x ++, y ++; g[x][y] += w; n = std::max(n, x), m = std::max(m, y); &#125; for (int i = 1; i &lt;= n; i++) &#123; for (int j = 1; j &lt;= m; j++) &#123; g[i][j] += g[i - 1][j] + g[i][j - 1] - g[i - 1][j - 1]; &#125; &#125; int res = 0; for (int i = R; i &lt;= n; i++) &#123; for (int j = R; j &lt;= m; j++) &#123; res = std::max(res, g[i][j] - g[i - R][j] - g[i][j - R] + g[i - R][j - R]); &#125; &#125; printf("%d\n", res); return 0;&#125;]]></content>
