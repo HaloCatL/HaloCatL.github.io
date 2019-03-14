@@ -5,7 +5,7 @@
     <url>%2F2019%2F03%2F13%2F%E6%9C%80%E4%BD%B3%E7%89%9B%E5%9B%B4%E6%A0%8F%2F</url>
     <content type="text"><![CDATA[农夫约翰的农场由 $N$ 块田地组成，每块地里都有一定数量的牛,其数量不会少于1头，也不会超过2000头。 约翰希望用围栏将一部分连续的田地围起来，并使得围起来的区域内每块地包含的牛的数量的平均值达到最大。 围起区域内至少需要包含 $F$ 块地，其中 $F$ 会在输入中给出。 在给定条件下，计算围起区域内每块地包含的牛的数量的平均值可能的最大值是多少。 输入格式第一行输入整数 $N$ 和 $F$ ，数据间用空格隔开。 接下来 $N$ 行，每行输出一个整数，第$i+1$行输出的整数代表，第$i$片区域内包含的牛的数目。 输出格式输出一个整数，表示围起区域内每块地包含的牛的数量的平均值可能的最大值乘以1000得到的数值。 数据范围$1≤N≤100000$$1≤F≤N$ 输入样例：123456789101110 66 4210385941 输出样例：16500 题目题解先分析这道题应该用什么算法，本题应该怎么入手 首先本题没有出现二分的特征词：“最大值最小” or “最小值最大” 并且给的数列不具备单调性，并且不适于排序，我们看到这种题可以先提出假设 比如，假设这道题用二分能解出 那么我们判断是否存在一个平均值大于等于mid，如果最优解是x，那么mid &lt;= x的时候，必然可以找到一段，其平均值≥mid， 否则 一定找不到 对于二分，二分是二分性而不是单调性 只要满足可以找到一个值一半满足一半不满足即可 而不用满足单调性 那么这个题我们就可以使用二分来解决 知道了这道题的算法之后，我们就来分析这道题 首先我们二分针对的是平均数，那么根据我们就可以捏出以下主函数 123456789101112131415int main() &#123; scanf("%d %d", &amp;n, &amp;m); double l = 0, r = 0; for (int i = 1; i &lt;= n; i++) &#123; scanf("%d", &amp;cows[i]); r = std::max(r, (double)cows[i]); &#125; //最小左区间 最大右区间 while(r - l &gt; 1e-5) &#123; //开始二分 因为是实数所以这里还搞个精度 double mid = (l + r) / 2; // 不是&gt;&gt;1 这里是实数 if(check(mid)) l = mid; //将问题转变为判定问题 else r = mid; &#125; printf("%d\n", (int)(r * 1000)); //因为我们找的极大值 所以要右端点*1000 否则可能会出错 return 0; &#125; 二分最难的地方就在于check函数的写法，我们先来捋一遍思路，防止写代码的时候思路混乱 ①：我们要找的是 有没有一段不小于F的区间，使这段区间的平均数尽可能的大，如果我们找到了一段连续的区间且区间长度不小于F且平均数大于我们二分的平均数 那么大于这个数且区间也满足的一定满足了 我们直接判断正确即可 ②：因为我们要找一段区间的平均数，根据平均数的一个基本应用，显而易见，对于一段序列，每个数减去我们所算的平均数，如果大于0 那么他本身就大于平均数，如果小于0 那么它本身就小于平均数 此时我们就能算出哪些数大于0 哪些数小于0 ，之后我们再使用前缀和，就能判断一个区间内的平均值是否大于或小于我们二分的平均数了 ③：据②我们还可以继续优化，因为我们不仅需要找F大小区间内，我们还要找＞F大小区间内的，我们如果用二次for太费时间了，我们这里可以使用双指针的做法，我们设$i = 0, j = F$ 每次使两个数++ [$i++, j++$] 因为$i, j$始终满足相距$F$的距离，所以我们用一个变量$minv$来存储$i$所遍历到的最小值，这样我们比较的距离一定是$≥F$的，并且如果我们用$j$位的前缀和数减去$minv$的话，就能得到我们的最优解，如果这个最优解＞= 0 那么就满足我们的指定条件（如果不懂这一步 请看②）。 到此，结束 我们便可以写出二分的$check$代码 1234567891011bool check(double avg) &#123; for (int i = 1; i &lt;= n; i++) &#123; sum[i] = sum[i - 1] + (cows[i] - avg); //计算前缀和 &#125; double minv = 0; //设置最小值 for (int i = 0, j = m; j &lt;= n; j++, i++) &#123; minv = std::min(minv, sum[i]); //找最优极小值 if(sum[j] - minv &gt;= 0) return true; //进行判断 &#125; return false; //如果所有的都不满足，那么这个平均数就一定不满足&#125; 以下是全代码： 12345678910111213141516171819202122232425262728293031323334353637//#define fre yes#include &lt;cstdio&gt;#include &lt;iostream&gt;const int N = 100005;int cows[N]; double sum[N];int n, m;bool check(double avg) &#123; for (int i = 1; i &lt;= n; i++) &#123; sum[i] = sum[i - 1] + cows[i] - avg; &#125; double minv = 0; for (int i = 0, j = m; j &lt;= n; j++, i++) &#123; minv = std::min(minv, sum[i]); if(sum[j] - minv &gt;= 0) return true; &#125; return false;&#125;int main() &#123; scanf("%d %d", &amp;n, &amp;m); double l = 0, r = 0; for (int i = 1; i &lt;= n; i++) &#123; scanf("%d", &amp;cows[i]); r = std::max(r, (double)cows[i]); &#125; while(r - l &gt; 1e-5) &#123; double mid = (l + r) / 2; if(check(mid)) l = mid; else r = mid; &#125; printf("%d\n", (int)(r * 1000)); return 0; &#125;]]></content>
       <categories>
-        <category>二分</category>
+        <category>OI</category>
       </categories>
       <tags>
         <tag>二分</tag>
@@ -16,7 +16,7 @@
     <url>%2F2019%2F03%2F13%2F%E6%9C%80%E9%AB%98%E7%9A%84%E7%89%9B%2F</url>
     <content type="text"><![CDATA[有 $N$ 头牛站成一行，被编队为1、2、3…N，每头牛的身高都为整数。 当且仅当两头牛中间的牛身高都比它们矮时，两头牛方可看到对方。 现在，我们只知道其中最高的牛是第 $P$ 头，它的身高是 $H$ ，剩余牛的身高未知。 但是，我们还知道这群牛之中存在着 $M$ 对关系，每对关系都指明了某两头牛 $A$ 和 $B$ 可以相互看见。 求每头牛的身高的最大可能值是多少。 输入格式第一行输入整数$N,P,H,M$，数据用空格隔开。 接下来M行，每行输出两个整数 $A$ 和 $B$ ，代表牛 $A$ 和牛 $B$ 可以相互看见，数据用空格隔开。 输出格式一共输出 $N$ 行数据，每行输出一个整数。 第 $i$ 行输出的整数代表第 $i$ 头牛可能的最大身高。 数据范围$1≤N≤10000$,$1≤H≤1000000$,$1≤A,B≤10000$,$0≤M≤10000$ 输入样例：1234569 3 5 51 35 34 33 79 8 输出样例：123456789545344555 注意： 此题中给出的关系对可能存在重复 题目题解：如果题目难度一直这么简单就好了… 这道题就是一道简单的差分，但是因为可能会出现重复情况，并且B可能会比A还要大，此时我们交换一下位置就OK了其他的就是简单的差分处理，详细看代码。 12345678910111213141516171819202122232425262728293031//#define fre yes#include &lt;map&gt;#include &lt;cstdio&gt;#include &lt;iostream&gt;const int N = 500005;int a[N], b[N];std::map&lt;int, int&gt; V;int main() &#123; static int N, M, H, P; scanf("%d %d %d %d", &amp;N, &amp;P, &amp;H, &amp;M); for (int i = 1, x, y; i &lt;= M; i++) &#123; scanf("%d %d", &amp;x, &amp;y); if(x &gt; y) std::swap(x, y); if(V[x] == y) continue; //用map判断 V[x] = y; //记录 b[x + 1] -= 1; //差分 下同 b[y] += 1; &#125; for (int i = 1; i &lt;= N; i++) &#123; a[i] = a[i - 1] + b[i]; //算出当前位置不加H的情况的长度 &#125; for (int i = 1; i &lt;= N; i++) &#123; printf("%d\n", a[i] + H); //加上H的情况的长度 &#125; return 0;&#125;]]></content>
       <categories>
-        <category>差分</category>
+        <category>OI</category>
       </categories>
       <tags>
         <tag>差分</tag>
@@ -27,7 +27,7 @@
     <url>%2F2019%2F03%2F07%2FIncDec%E5%BA%8F%E5%88%97%2F</url>
     <content type="text"><![CDATA[给定一个长度为 $n$ 的数列 $a_1,a_2,…,a_n$，每次可以选择一个区间 $[l,r]$，使下标在这个区间内的数都加一或者都减一。 求至少需要多少次操作才能使数列中的所有数都一样，并求出在保证最少次数的前提下，最终得到的数列可能有多少种。 输入格式第一行输入正整数$n$。 接下来$n$行，每行输入一个整数，第i+1行的整数代表$a_i$。 输出格式第一行输出最少操作次数。 第二行输出最终能得到多少种结果。 数据范围$0&lt;n≤10^5$,$0≤a_i&lt;2147483648$ 输入样例：1234541122 输出样例：1212 题目题解差分题：根据题目是使用区间加减一，很容易联想到差分 思路如下 ①：我们先算出整个数列的差分，因为不会用到原数组，所以可以用原数组进行差分 ②：差分的使用方法是 比如区间$[i, k] + 1$就是$f_i + 1, f_{k + 1} - 1$ 所以对于一组差分数列，我们尽量选择负数加正数减 这样能保证我们在还存在正负数的情况下是最少次数 ③：我们如果正数 + 负数 ≠ 0 那么一定有数余下，我们只需要让剩下的数和一号位或者$n + 1$号位进行操作就好了，因为这两个位置对于我们的结果不会造成干扰，既然这样，我们就有两个位置可以供选择 于是求至少需要多少次操作才能使数列中的所有数都一样，并求出在保证最少次数的前提下，最终得到的数列可能有多少种。这个问题就能解决了 在保证②满足的情况下，我们剩下的方案一定有.. 例如我们剩下5，就有 [0 5] [1 4] [2 3] [3 2] [4 1] [5 0] 一共六种（这里的[x y] x就是和一号位操作的数量 y就是和n + 1号位操作的数量）。于是结论就是满足③开始的情况下再+1即可解决 12345678910111213141516171819202122232425262728293031//#define fre yes#include &lt;cstdio&gt;#include &lt;iostream&gt;typedef long long LL;const int N = 100005;int a[N];int main() &#123; static int n; scanf("%d", &amp;n); for (int i = 1; i &lt;= n; i++) &#123; scanf("%d", &amp;a[i]); &#125; for (int i = n; i &gt;= 2; i++) &#123; a[i] = a[i] - a[i - 1]; //差分 &#125; LL pos = 0, meg = 0; for (int i = 2; i &lt;= n; i++) &#123; if(a[i] &gt; 0) pos += a[i]; //加所有正数 else meg -= a[i]; //所有负数 &#125; printf("%lld\n", std::min(meg, pos) + abs(meg - pos)); //最少操作次数 printf("%lld\n", abs(pos - meg) + 1); //最终得到的种类数 return 0;&#125;]]></content>
       <categories>
-        <category>差分</category>
+        <category>OI</category>
       </categories>
       <tags>
         <tag>差分</tag>
@@ -39,7 +39,7 @@
     <url>%2F2019%2F03%2F06%2F%E6%BF%80%E5%85%89%E7%82%B8%E5%BC%B9%2F</url>
     <content type="text"><![CDATA[一种新型的激光炸弹，可以摧毁一个边长为 $R$ 的正方形内的所有的目标。 现在地图上有 $N$ 个目标，用整数$X_i,Y_i$表示目标在地图上的位置，每个目标都有一个价值$W_i$。 激光炸弹的投放是通过卫星定位的，但其有一个缺点，就是其爆炸范围，即那个边长为 $R$ 的正方形的边必须和$x，y$轴平行。 若目标位于爆破正方形的边上，该目标不会被摧毁。 求一颗炸弹最多能炸掉地图上总价值为多少的目标。 输入格式第一行输入正整数 $N$ 和 $R$ ,分别代表地图上的目标数目和正方形的边长，数据用空格隔开。 接下来$N$行，每行输入一组数据，每组数据包括三个整数$X_i,Y_i,W_i$,分别代表目标的$x$坐标，$y$坐标和价值，数据用空格隔开。 输出格式输出一个正整数，代表一颗炸弹最多能炸掉地图上目标的总价值数目。 数据范围$0&lt;N≤10000$$0≤X_i,Y_i≤5000$ 输入样例：1232 10 0 11 1 1 输出样例：11 题目题解：此题知道一个概念：前缀和 普通一维前缀和 $f[k] = \sum _{i = 1}^{k}f[i]$ 那么二维前缀和如何求呢？ 请看图片 如果我们要求右下角的点的前缀和，我们就用 整个大矩形 - 两个红矩形 + 一个蓝矩形 即 $f_{i,j} = f_{i, j} - f_{i - R, j} - f_{i, j - R} + f_{i - R, j - R}$ 然后就能算我们的答案了。 记住，这里的爆炸矩形的边角所取的点可以不在整个大矩形上，也可以在大矩形中的小矩形内。 123456789101112131415161718192021222324252627282930313233//#define fre yes#include &lt;cstdio&gt;#include &lt;iostream&gt;const int N = 5005;int g[N][N];int main() &#123; static int N, R; scanf("%d %d", &amp;N, &amp;R); int n = R, m = R; for (int i = 0, x, y, w; i &lt; N; i++) &#123; scanf("%d %d %d", &amp;x, &amp;y, &amp;w); x ++, y ++; g[x][y] += w; n = std::max(n, x), m = std::max(m, y); &#125; for (int i = 1; i &lt;= n; i++) &#123; for (int j = 1; j &lt;= m; j++) &#123; g[i][j] += g[i - 1][j] + g[i][j - 1] - g[i - 1][j - 1]; &#125; &#125; int res = 0; for (int i = R; i &lt;= n; i++) &#123; for (int j = R; j &lt;= m; j++) &#123; res = std::max(res, g[i][j] - g[i - R][j] - g[i][j - R] + g[i - R][j - R]); &#125; &#125; printf("%d\n", res); return 0;&#125;]]></content>
       <categories>
-        <category>前缀和</category>
+        <category>OI</category>
       </categories>
       <tags>
         <tag>二维前缀和</tag>
@@ -51,7 +51,7 @@
     <url>%2F2019%2F02%2F27%2F%E5%88%86%E5%BD%A2%E4%B9%8B%E5%9F%8E%2F</url>
     <content type="text"><![CDATA[城市的规划在城市建设中是个大问题。 不幸的是，很多城市在开始建设的时候并没有很好的规划，城市规模扩大之后规划不合理的问题就开始显现。 而这座名为 Fractal 的城市设想了这样的一个规划方案，如下图所示： 当城区规模扩大之后，Fractal 的解决方案是把和原来城区结构一样的区域按照图中的方式建设在城市周围，提升城市的等级。 对于任意等级的城市，我们把正方形街区从左上角开始按照道路标号。 虽然这个方案很烂，Fractal 规划部门的人员还是想知道，如果城市发展到了等级 N，编号为 A 和 B 的两个街区的直线距离是多少。 街区的距离指的是街区的中心点之间的距离，每个街区都是边长为 10 米的正方形。 输入格式第一行输入正整数$n$，表示测试数据的数目。 以下$n$行，输入n组测试数据，每组一行。 每组数据包括三个整数 $N,A,B$ 表示城市等级以及两个街区的编号，整数之间用空格隔开。 输出格式一共输出nn行数据，每行对应一组测试数据的输出结果，结果四舍五入到整数。 数据范围$1≤N≤31$$1≤A,B≤2^{2N},$ $1≤n≤1000$ 输入样例：12343 1 1 2 2 16 1 3 4 33 输出样例：12310 30 50 题目题解：题目有点难度，我们先将A, B所代表的坐标表示出来，这样我们就直接用两点间的距离公式将A, B的直线距离算出来。 那么如何求出两个坐标呢？ 首先先观察这个图形的变化吧，我们先定义，一个大正方形 = 4 中正方形 = 4 （每个中正方形的小正方形），我们又可以得出，每个小正方的数目都是相同的。于是4个中正方形也是相同的，为了方便，我们称一个大正方形为$P$ 一个中正方形为$R$。 我们由上边的结论求出$R$的边长，即$2^{n - 1}$，由此我们可以得到一个中正方形中有多少个小正方形 即 $2^{2(n - 1)}$ （这里的$n$为城市等级） 定义完毕后，我们就回归主题 图形的变化 首先是我们解决的方式是 以大化小 将一个大等级化成若干个小等级来解决问题，首先我们先得到最小的图形，然后根据图形的规律将其拼出更大的图形，那么首先我们得得到我们的目标点的位置，然后就逐渐缩小目标，这样就可以得到目标点是由最初点（Lv.1）的哪个点旋转得来的，那么我们就可以通过坐标旋转完善图形来找到我们的坐标，这个过程可以通过递归完成。 关于坐标旋转，可以通过以下公式，这个公式的意义是 使一个坐标顺时针旋转$\theta$角，这里是坐标！ (x,y) \cdot \begin{bmatrix} cos\theta & sin\theta\\ -sin\theta & cos\theta \end{bmatrix}因为我们旋转的都是所有大图形的左上角的中图形（除了Lv.1） 所以除了第一个图形，我们都需要经过移动而不仅仅是旋转。 接下来就是细节处理了，首先是我们坐标编号，我们从0开始编号，为了方便处理坐标处于哪个中方块。 对于坐标，我们给一个大方块的左上角的中方块记号为0， 右上角为1， 右下角为2，左下角为3。这个记号有什么用呢？我们可以通过题目给的$m$来推出它的起始点的编号是什么，那么我们用$m$除对于当前大方块中的中方块中的小方块的总数量，我们就能得到当前点处于的哪个中方块中，此时记号就能起到作用了。 然后我们就能算出两个坐标，用两点之间的距离公式就能算出答案了。 123456789101112131415161718192021222324252627282930313233//#define fre yes#include &lt;cmath&gt;#include &lt;cstdio&gt;#include &lt;iostream&gt;typedef long long LL;typedef std::pair&lt;LL, LL&gt; PLL;PLL calc(LL n, LL m) &#123; if(n == 0) return &#123;0, 0&#125;; LL len = 1ll &lt;&lt; n - 1, cnt = 1ll &lt;&lt; 2 * n - 2; //len = 每个中方块的边长 cnt = 每个中方块内小方块的数量 PLL pos = calc(n - 1, m % cnt); //以大化小 LL x = pos.first, y = pos.second; LL z = m / cnt; //计算对于每个等级在哪个中方块内 if(z == 0) return &#123;y, x&#125;; //这里看不懂的记住我之前说的话 旋转是针对坐标！ if(z == 1) return &#123;x, y + len&#125;; //我们的图像可以理解为以横为y,以竖为x 这样画图就能理解 if(z == 2) return &#123;x + len, y + len&#125;; //同上 if(z == 3) return &#123;2 * len - 1 - y, len - 1 - x&#125;; //同z = 0的情况&#125;int main() &#123; int T; scanf("%d", &amp;T); while(T--) &#123; LL N, A, B; scanf("%ld %ld %ld", &amp;N, &amp;A, &amp;B); PLL ac = calc(N, A - 1); PLL bc = calc(N, B - 1); double x = ac.first - bc.first, y = ac.second - bc.second; printf("%.0lf\n", sqrt(x * x + y * y) * 10); //记住这里要0lf(四舍五入到整数） &#125; return 0;&#125;]]></content>
       <categories>
-        <category>递归</category>
+        <category>OI</category>
       </categories>
       <tags>
         <tag>线性代数</tag>
@@ -63,9 +63,10 @@
     <url>%2F2019%2F02%2F23%2F%E7%BA%A6%E6%95%B0%E4%B9%8B%E5%92%8C%2F</url>
     <content type="text"><![CDATA[假设现在有两个自然数A和B，S是$A^B$的所有约数之和。 请你求出S mod 9901的值是多少。 输入格式在一行中输入用空格隔开的两个整数A和B。 输出格式输出一个整数，代表S mod 9901的值。 数据范围$0≤A,B≤5×10^7$ 输入样例：12 3 输出样例：115 注意: A和B不会同时为0。 题目题解：这个题需要三个新知识： 质因数分解任何一个数 $x$ 都能分解为 $x = $$\prod ^k_{i=1}{p_i}^{a_i}$ 约数个数定理那么根据质因数分解的数，我们就可以得到总的约数个数为 $f(n) = $$\prod ^{k}_{i=1}(a_i + 1)$，那么根据这样，我们就可以得到约数的个数的数量 很好证明，因为$p^n$的约数有$p^0, p^1, p^2, … , p^n$ 即个数为$(n + 1)$ 约数定理$n$的$\prod ^n_{i=1}(a_i + 1)$个正约数的和为： $\prod ^k_{i = 1}\sum ^k_{j = 0}(p^j_i) $ 因为这样算复杂度太高，我们需要将式子简单化一下。 对于这道题，约数定理就有 $A^B$ 的约数和为： $\prod ^k_{i = 1}\sum ^{k×B}_{j = 0}(p^j_i) $ 定义sum(n, k)为$p^0 + p^1 + … + p^k$，分为两部分的和为 $(p ^ 0 + … + p^{\frac{k}{2}}) + (p ^ {\frac{k}{2} + 1} + … + p ^ k)$ 右边的式子可以提一个公因数 $p^{\frac{k}{2}} + 1$ 于是就变成了 $(p ^ 0 + … + p ^ {\frac{k}{2}}) × (p ^ {\frac{k}{2}} + 1)$ 于是就得到了sum(n, \frac{k}{2}) × (p ^ {\frac{k}{2}} + 1) 于是我们只用算后面的式子，前面有递归解决即可 这里需要注意，我们只有偶数次方能这么算，如果是奇数次方，我们将一个n暴力算出来，然后再用上面的方法算即可 12345678910111213141516171819202122232425262728293031323334353637383940//#define fre yes#include &lt;cstdio&gt;const int MOD = 9901;int qmi(int a, int k) &#123; a %= MOD; int res = 1; while(k) &#123; if(k &amp; 1) res = res * a % MOD; a = a * a % MOD; k &gt;&gt;= 1; &#125; return res;&#125;int sum(int p, int k) &#123; if(k == 0) return 1; if(!(k &amp; 1)) return (p % MOD * sum(p, k - 1) + 1) % MOD; return (1 + qmi(p, k / 2 + 1)) * sum(p, k / 2) % MOD;&#125;int main() &#123; static int A, B; scanf("%d %d", &amp;A, &amp;B); int res = 1; for (int i = 2; i &lt;= A; i++) &#123; int s = 0; while(A % i == 0) &#123; s++; A /= i; &#125; if(s) res = res * sum(i, s * B) % MOD; &#125; if(!A) res = 0; printf("%d\n", res); return 0;&#125;]]></content>
       <categories>
-        <category>递推</category>
+        <category>OI</category>
       </categories>
       <tags>
+        <tag>递推</tag>
         <tag>数论</tag>
       </tags>
   </entry>
@@ -85,7 +86,7 @@
     <url>%2F2019%2F02%2F20%2F%E5%A5%87%E6%80%AA%E7%9A%84%E6%B1%89%E8%AF%BA%E5%A1%94%2F</url>
     <content type="text"><![CDATA[汉诺塔问题，条件如下： 1、这里有A、B、C和D四座塔。 2、这里有n个圆盘，n的数量是恒定的。 3、每个圆盘的尺寸都不相同。 4、所有的圆盘在开始时都堆叠在塔A上，且圆盘尺寸从塔顶到塔底逐渐增大。 5、我们需要将所有的圆盘都从塔A转移到塔D上。 6、每次可以移动一个圆盘，当塔为空塔或者塔顶圆盘尺寸大于被移动圆盘时，可将圆盘移至这座塔上。 请你求出将所有圆盘从塔A移动到塔D，所需的最小移动次数是多少。 汉诺塔塔参考模型 输入格式没有输入 输出格式对于每一个整数n($1≤n≤12$),输出一个满足条件的最小移动次数，每个结果占一行。 输入样例：1没有输入 输出样例：1参考输出格式 题目题解经典的递推题，我们设d为三个塔的情况，f为四个塔的情况。 我们d的推导公式是 $d_i = d_{i - 1} * 2 + 1$ 推导方式：若当前我们有三个塔，第一个塔有5个，我们将上面的4个移动到第二个需要花费K次移动的话，那么我们再将最大的一个移动最后一个，我们再将第二个叠到第三个 需要花费K + 1次移动，总共就是K*2 + 1次移动。 因为每次我们的n都是累加的，所以我们可以反复利用d数组 分析完三个塔，我们再来分析四个塔 推导方式：若当前我们有四个塔，那么移动总数一定小于三个塔，因为多了一个塔，我们可以将之前第二个塔的盘子的数量减少，这减少的部分就直接移动到最后一个塔，而第三个塔的盘子仍旧放到第四个塔不动， 然后这样到最后的结果一定变少。（自己画图理解一下）那么推导公式是 $f_i = min(f_i, f_j + d_{i - j})$ 这里的$j$就是枚举的分出去的量，这个量可能 $=0$ 但永远不可能$≥i$ 为什么是$d_{i - j}$，因为将上面的移动完之后，下面的只用移动一次到最后一个塔就行。 于是我们就可以得到代码： 123456789101112131415161718192021222324252627//#define fre yes#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;iostream&gt;const int N = 15;int d[N], f[N];int main() &#123; d[1] = 1; //初始化，如果n = 1的话 移动次数为1 for (int i = 2; i &lt;= 12; i++) &#123; d[i] = d[i - 1] * 2 + 1; //转移方程 &#125; memset(f, 0x3f, sizeof(f)); //因为求最小值，所以讲数组重定为最大 f[0] = 0; //n为0时，f为0 for (int i = 1; i &lt;= 12; i++) &#123; //12次n for (int j = 0; j &lt; i; j++) &#123; //枚举j 分几个走 f[i] = std::min(f[i], f[j] * 2 + d[i - j]); //转移方程 &#125; &#125; for (int i = 1; i &lt;= 12; i++) &#123; printf("%d\n", f[i]); &#125; return 0;&#125;]]></content>
       <categories>
-        <category>动态规划</category>
+        <category>OI</category>
       </categories>
       <tags>
         <tag>递推</tag>
@@ -97,7 +98,7 @@
     <url>%2F2019%2F02%2F19%2F%E8%B4%B9%E8%A7%A3%E7%9A%84%E5%BC%80%E5%85%B3%2F</url>
     <content type="text"><![CDATA[你玩过“拉灯”游戏吗？25盏灯排成一个5x5的方形。每一个灯都有一个开关，游戏者可以改变它的状态。每一步，游戏者可以改变某一个灯的状态。游戏者改变一个灯的状态会产生连锁反应：和这个灯上下左右相邻的灯也要相应地改变其状态。 我们用数字“1”表示一盏开着的灯，用数字“0”表示关着的灯。下面这种状态 123451011101101101111000011011 在改变了最左上角的灯的状态后将变成： 123450111111101101111000011011 再改变它正中间的灯后状态将变成： 123450111111001110011010011011 给定一些游戏的初始状态，编写程序判断游戏者是否可能在6步以内使所有的灯都变亮。 输入格式第一行输入正整数$n$，代表数据中共有$n$个待解决的游戏初始状态。 以下若干行数据分为$n$组，每组数据有$5$行，每行$5$个字符。每组数据描述了一个游戏的初始状态。各组数据间用一个空行分隔。 输出格式一共输出$n$行数据，每行有一个小于等于$6$的整数，它表示对于输入数据中对应的游戏状态最少需要几步才能使所有灯变亮。 对于某一个游戏初始状态，若6步以内无法使所有灯变亮，则输出“-1”。 数据范围$0&lt;n≤500$ 输入样例：1234567891011121314151617183001110101110001110101110011101111011111011111111110111111111111111111111111 输出样例：12332-1 题目题解对于这个题，其实在2017年有一道初赛题和这个很像 对于这个题，我们如果考虑第一行的所有情况，就相当于确定了整个棋盘的所有情况 因为一个数如果想要改变，并且不会修改之前修改的情况的话，一定是修改当前数的下一行的同列数。 那么我们只需枚举第一行的所有情况即可。 那么根据第一行的枚举情况我们向下推就好。 详细看代码注释。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071//#define fre yes#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;iostream&gt;const int N = 15;char path[N][N];const int INF = 1e9;int dx[] = &#123;0, -1, 0, 1, 0&#125;; //向4个方向移动int dy[] = &#123;0, 0, 1, 0, -1&#125;;void turn(int x, int y) &#123; for (int i = 0; i &lt; 5; i++) &#123; int a = x + dx[i], b = y + dy[i]; if(a &gt;= 0 &amp;&amp; a &lt; 5 &amp;&amp; b &gt;= 0 &amp;&amp; b &lt; 5) &#123; path[a][b] ^= 1; //这里的意思是将path[a][b]换成ASCII上的二进制数然后异或完之后再换回去 这样'1' ^ 1 = '0' '0' ^ 1 = '1' &#125; &#125;&#125;int work() &#123; int ans = INF; for (int k = 0; k &lt; 1 &lt;&lt; 5; k++) &#123; //枚举第一排的所有情况 用二进制数表示 char backup[N][N]; int res = 0; memcpy(backup, path, sizeof path); //复制整个path数组到backup for (int j = 0; j &lt; 5; j++) &#123; //枚举第一排的所有情况 if(k &gt;&gt; j &amp; 1) &#123; res++; turn(0, j); &#125; &#125; for (int i = 0; i &lt; 4; i++) &#123; for (int j = 0; j &lt; 5; j++) &#123; if(path[i][j] == '0') &#123; res++; turn(i + 1, j); &#125; &#125; &#125; bool is_successful = true; for (int j = 0; j &lt; 5; j++) &#123; if(path[4][j] == '0') &#123; is_successful = false; break; &#125; &#125; if(is_successful) ans = std::min(ans, res); mempcpy(path, backup, sizeof backup); //将path替换到backup &#125; if(ans &gt; 6) ans = -1; //记得步数不能超过6 return ans;&#125;int main() &#123; static int T; scanf("%d", &amp;T); while(T--) &#123; for (int i = 0; i &lt; 5; i++) scanf("%s", path[i]); printf("%d\n", work()); &#125; return 0;&#125;]]></content>
       <categories>
-        <category>位运算</category>
+        <category>OI</category>
       </categories>
       <tags>
         <tag>位运算</tag>
@@ -108,7 +109,7 @@
     <url>%2F2019%2F02%2F18%2F%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E6%8E%92%E5%88%97%E5%9E%8B%E6%9E%9A%E4%B8%BE%2F</url>
     <content type="text"><![CDATA[把 $1~n$ 这 $n$ 个整数排成一行后随机打乱顺序，输出所有可能的次序。 输入格式一个整数$n$。 输出格式按照从小到大的顺序输出所有方案，每行1个。 首先，同一行相邻两个数用一个空格隔开。 其次，对于两个不同的行，对应下标的数一一比较，字典序较小的排在前面。 数据范围$1≤n≤9$ 输入样例：13 输出样例：1234561 2 31 3 22 1 32 3 13 1 23 2 1 题目题解相比于递归实现指数型枚举与递归实现组合型枚举，这道题需要输出次序，因为我们的二进制只能表示某一位是否用过，并不能储存位置，所以我们需要使用数组的帮助。 详细看代码 123456789101112131415161718192021222324252627282930//#define fre yes#include &lt;cstdio&gt;#include &lt;vector&gt;int n;std::vector&lt;int&gt; path; //vector数组void dfs(int u, int state) &#123; if(u == n) &#123; for (int i = 0; i &lt; path.size(); i++) &#123; printf("%d ", path[i]); &#125; puts(""); return ; &#125; for (int i = 0; i &lt; n; i++) &#123; if(!(state &gt;&gt; i &amp; 1)) &#123; path.push_back(i + 1); dfs(u + 1, state | (1 &lt;&lt; i)); //不需要讨论不选，因为所有数必须选 path.pop_back(); //递归回来记得清理足迹 &#125; &#125;&#125;int main() &#123; scanf("%d", &amp;n); dfs(0, 0); return 0;&#125;]]></content>
       <categories>
-        <category>位运算</category>
+        <category>OI</category>
       </categories>
       <tags>
         <tag>位运算</tag>
@@ -119,7 +120,7 @@
     <url>%2F2019%2F02%2F18%2F%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E7%BB%84%E5%90%88%E5%9E%8B%E6%9E%9A%E4%B8%BE%2F</url>
     <content type="text"><![CDATA[从 $1~n$ 这 $n$ 个整数中随机选出 $m$ 个，输出所有可能的选择方案。 输入格式两个整数 $n,m$ ,在同一行用空格隔开。 输出格式按照从小到大的顺序输出所有方案，每行1个。 首先，同一行内的数升序排列，相邻两个数用一个空格隔开。 其次，对于两个不同的行，对应下标的数一一比较，字典序较小的排在前面（例如1 3 5 7排在1 3 6 8前面）。 数据范围$n&gt;0$,$0≤m≤n$ ,$n+(n−m)≤25$ 输入样例：15 3 输出样例：123456789101 2 3 1 2 4 1 2 5 1 3 4 1 3 5 1 4 5 2 3 4 2 3 5 2 4 5 3 4 5 题目题解相比于递归实现指数型枚举这道题多了一个数量限制，我们仅仅只需要将代码改一改就好了 12345678910111213141516171819202122232425262728//#define fre yes#include &lt;cstdio&gt;int n, m;void dfs(int u, int sum, int state) &#123; if(sum + n - u &lt; m) return ; //增加一个优化 （这里可以删除） if(sum == m) &#123; for (int i = 0; i &lt; n; i++) &#123; if(state &gt;&gt; i &amp; 1) &#123; printf("%d ", i + 1); &#125; &#125; puts(""); return ; &#125; if(u == n) return ; dfs(u + 1, sum + 1, state | (1 &lt;&lt; u)); //因为我们要从小到大 所以我们要先选 dfs(u + 1, sum, state); //或者不选&#125;int main() &#123; scanf("%d %d", &amp;n, &amp;m); dfs(0, 0, 0); return 0;&#125;]]></content>
       <categories>
-        <category>位运算</category>
+        <category>OI</category>
       </categories>
       <tags>
         <tag>位运算</tag>
@@ -130,7 +131,7 @@
     <url>%2F2019%2F02%2F18%2F%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E6%8C%87%E6%95%B0%E5%9E%8B%E6%9E%9A%E4%B8%BE%2F</url>
     <content type="text"><![CDATA[从 1~n 这 n 个整数中随机选取任意多个，输出所有可能的选择方案。 输入格式输入一个整数$n$。 输出格式每行输出一种方案。 同一行内的数必须升序排列，相邻两个数用恰好1个空格隔开。 对于没有选任何数的方案，输出空行。 本题有自定义校验器（SPJ），各行（不同方案）之间的顺序任意。 数据范围$1≤n≤15$ 输入样例：13 输出样例：1234567322 311 31 21 2 3 题目题解递归基础模板题 详细看代码 12345678910111213141516171819202122232425//#define fre yes#include &lt;cstdio&gt;int n;void dfs(int u, int state) &#123; //第一个表示搜到第几了，第二个表示一个二进制数表示 哪些数用过 if(u == n) &#123; //如果遍历到第n个数了那么我们就输出即可 for (int i = 0; i &lt; n; i++) &#123; if(state &gt;&gt; i &amp; 1) &#123; //第i个数如果用过， printf("%d ", i + 1); //输出i &#125; &#125; puts(""); return ; &#125; dfs(u + 1, state); //不选第u个数 dfs(u + 1, state | 1 &lt;&lt; u);//选第u个数&#125;int main() &#123; scanf("%d", &amp;n); dfs(0, 0); return 0;&#125;]]></content>
       <categories>
-        <category>位运算</category>
+        <category>OI</category>
       </categories>
       <tags>
         <tag>位运算</tag>
@@ -141,11 +142,11 @@
     <url>%2F2019%2F02%2F18%2F%E6%9C%80%E7%9F%ADHamilton%E8%B7%AF%E5%BE%84%2F</url>
     <content type="text"><![CDATA[给定一张 $n$ 个点的带权无向图，点从 0~n-1 标号，求起点 0 到终点 n-1 的最短Hamilton路径。 Hamilton路径的定义是从 0 到 n-1 不重不漏地经过每个点恰好一次。 输入格式第一行输入整数$n$。 接下来$n$行每行$n$个整数，其中第$i$行第$j$个整数表示点$i$到$j$的距离（记为a[i,j]）。 对于任意的$x,y,z$，数据保证 a[x,x]=0，a[x,y]=a[y,x] 并且 a[x,y]+a[y,z]&gt;=a[x,z]。 输出格式输出一个整数，表示最短Hamilton路径的长度。 数据范围$1≤n≤20$$0≤a[i,j]≤10^7$ 输入样例：12345650 2 4 5 12 0 6 5 34 6 0 8 35 5 8 0 51 3 3 5 0 输出样例：118 题目题解Hamilton路径是一种经典的NP问题，这种问题没有一个有效的多项式进行优化 所以我们可以考虑爆搜，并使用位运算进行计算优化 首先，如果使用爆搜，我们就得遍历所有的可能 这个时间复杂度是 O(20!) 那么就是 2432902008176640000 这么多的时间复杂度 所以我们可以排除爆搜这种做法，那么我们就考虑其他的想法 因为我们要走完所有的路，并且走最短路 我们考虑两种走法 （若此时我们有 $i$ $j$ $k$ 三个点 1：$i$ ——&gt; $j$ 2：$i$ ——&gt; $k$ ——&gt; $j$ 若第二种的路径长度小于第一种，说明我们走下面是最优的，我们 i -&gt; j 的长度就可以变成最优的那个 于是我们就可以推出关系式 $f_{i,j} = min(f_{i,j}, f_{i - (1 &lt;&lt; j),k} + weight_{k,j})$ 这里的 $i$ 储存的是我们所有点的状态（二进制数），$j$ 表达的是第 $j$ 个点 $k$ 表达的是第 $k$ 个点 （$i$如果是 7[111] 那么 就表示第一、二、三个点都是用过的） 这里的 $i - (1 &lt;&lt; j)$ 就是当前状态是由上一个第$j$个点没有遍历过的状态转移过来的 于是根据上方关系，我们就可以列出代码 12345678910111213141516171819202122232425262728293031323334353637//#define fre yes#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;iostream&gt;const int N = 1 &lt;&lt; 20, M = 25;int f[N][M], weight[M][M];int main() &#123; static int n; scanf("%d", &amp;n); for (int i = 0; i &lt; n; i++) &#123; for (int j = 0; j &lt; n; j++) &#123; scanf("%d", &amp;weight[i][j]); &#125; &#125; memset(f, 0x3f, sizeof(f)); //因为求最小值，我们需要先将路程转为最大值 f[1][0] = 0; for (int i = 0; i &lt; 1 &lt;&lt; n; i++) &#123; //枚举所有状态 for (int j = 0; j &lt; n; j++) &#123; //枚举所有点 if(i &gt;&gt; j &amp; 1) &#123; //如果第j个点遍历过了 for (int k = 0; k &lt; n; k++) &#123; //枚举第k个点 if(i - (1 &lt;&lt; j) &gt;&gt; k &amp; 1) &#123; //如果在状态中减去j之后第k个点依旧遍历到了 f[i][j] = std::min(f[i][j], f[i - (1 &lt;&lt; j)][k] + weight[k][j]); //进行转移方程 &#125; &#125; &#125; &#125; &#125; printf("%d\n", f[(1 &lt;&lt; n) - 1][n - 1]); //因为我们是从0开始记位，所以我们都要-1 return 0;&#125; 注意 这里的$f_{i,j}$并不是代表的 $i$ 点到 $j$ 点，而是当前已经到达 $j$ 点时所有点的状态，以及当前走过的最短路径！！]]></content>
       <categories>
-        <category>位运算</category>
-        <category>状压DP</category>
+        <category>OI</category>
       </categories>
       <tags>
         <tag>位运算</tag>
+        <tag>状压DP</tag>
       </tags>
   </entry>
   <entry>
@@ -153,11 +154,11 @@
     <url>%2F2019%2F02%2F17%2F64%E4%BD%8D%E6%95%B4%E6%95%B0%E4%B9%98%E6%B3%95%2F</url>
     <content type="text"><![CDATA[求 $a$ 乘 $b$ 对 $p$ 取模的值。 输入格式第一行输入整数$a$，第二行输入整数$b$，第三行输入整数$p$。 输出格式输出一个整数，表示$a*b Mod p$的值。 数据范围$1≤a,b,p≤10^{18}$ 输入样例：13 4 5 输出样例：12 题目题解推导式子等同于 快速幂 只需稍微修改即可，详细看代码 12345678910111213141516//#define fre yes#include &lt;cstdio&gt;int main() &#123; long long a, b, c; scanf("%lld %lld %lld", &amp;a, &amp;b, &amp;c); long long res = 0; while(b) &#123; if(b &amp; 1) res = (res + a) % c; a = (a + a) % c; b &gt;&gt;= 1; &#125; printf("%lld\n", res); return 0;&#125;]]></content>
       <categories>
-        <category>位运算</category>
-        <category>快速幂</category>
+        <category>OI</category>
       </categories>
       <tags>
         <tag>位运算</tag>
+        <tag>快速幂</tag>
       </tags>
   </entry>
   <entry>
@@ -165,11 +166,11 @@
     <url>%2F2019%2F02%2F17%2F%E5%BF%AB%E9%80%9F%E5%B9%82%2F</url>
     <content type="text"><![CDATA[求 $a$ 的 $b$ 次方对 $p$ 取模的值。 输入格式三个整数 $a,b,p$ ,在同一行用空格隔开。 输出格式输出一个整数，表示a^b mod p的值。 数据范围$1≤a,b,p≤10^9$ 输入样例：13 2 7 输出样例：12 题目题解若要直接算 $a^b$ 即计算 $b$ 遍，复杂度就是 $O(n)$ 快速幂的时间复杂度可以将原本 $O(n)$ 的时间复杂度缩短为 $O(logn)$ 基本思想： 原式若为 $a^{10}$ 那么 原式 = $a ^ {((2 × 1) + (2 × 3))}$ = $a ^ {(2 × 1)} + a ^ {(2 × 3)}$ 为什么将 10 分为关于 2 的式子？ 因为可以将其联系到二进制数 根据二进制数我们可以利用二进数的特点将其的计算量大幅度减少 于是我们可以得出以下代码… 123456789101112131415//#define fre yes#include &lt;cstdio&gt;int main() &#123; static int a, b, p; scanf("%d %d %d", &amp;a, &amp;b, &amp;p); int res = 1 % p; //若 b = 0 p = 1 那么下面计算就不会进行 最后结果不会计算 所以需要%一个 while(b) &#123; if(b &amp; 1) res = (long long)res * a % p; // 中途数据会超long long这里需要转换 a = (long long)a * a % p; b &gt;&gt;= 1; &#125; printf("%d\n", res); return 0;&#125;]]></content>
       <categories>
-        <category>位运算</category>
-        <category>快速幂</category>
+        <category>OI</category>
       </categories>
       <tags>
         <tag>位运算</tag>
+        <tag>快速幂</tag>
       </tags>
   </entry>
   <entry>
