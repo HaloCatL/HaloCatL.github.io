@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="HaloCat_Blog">
 <meta property="og:description" content="莫斯科正在举办一个大型国际会议，有$n$个来自不同国家的科学家参会。 每个科学家都只懂得一种语言。 为了方便起见，我们把世界上的所有语言用$1$到$10^9$之间的整数编号。 在会议结束后，所有的科学家决定一起去看场电影放松一下。 他们去的电影院里一共有$m$部电影正在上映，每部电影的语音和字幕都采用不同的语言。 对于观影的科学家来说，如果能听懂电影的语音，他就会很开心；如果能看懂字幕，他就会比较">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-18T06:28:16.719Z">
+<meta property="og:updated_time" content="2019-03-18T06:31:32.768Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="电影">
 <meta name="twitter:description" content="莫斯科正在举办一个大型国际会议，有$n$个来自不同国家的科学家参会。 每个科学家都只懂得一种语言。 为了方便起见，我们把世界上的所有语言用$1$到$10^9$之间的整数编号。 在会议结束后，所有的科学家决定一起去看场电影放松一下。 他们去的电影院里一共有$m$部电影正在上映，每部电影的语音和字幕都采用不同的语言。 对于观影的科学家来说，如果能听懂电影的语音，他就会很开心；如果能看懂字幕，他就会比较">
@@ -427,7 +427,7 @@
 <h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">2 3 2</span><br><span class="line">2</span><br><span class="line">3 2</span><br><span class="line">2 3</span><br></pre></td></tr></table></figure>
 <h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
 <h4 id="题目题解："><a href="#题目题解：" class="headerlink" title="题目题解："></a>题目题解：</h4><p>这道题的思想很好懂，给你$N$个人懂的语言，再给你$M$个电影的语音和字幕，假如我们没有字幕，我们仅考虑语音，那么我们用<strong>计数排序</strong>搞一次就好了，然后再遍历一次看看谁最多即可。但此时有个字幕，也很好解决，记录答案的时候顺便记录一下当前的看得懂字幕人数就好了，如果我们的语音人数相同，那么就看 看得懂字幕人数哪个多。</p>
-<p>但是，本题的语言的编号范围是 $1~10^9$ 对于$64MB$的空间我们的数组只能开到 $10^6$，那应该怎么办呢？</p>
+<p>但是，本题的语言的编号范围是 $10^9$ 对于$64MB$的空间我们的数组只能开到 $10^6$，那应该怎么办呢？</p>
 <p><strong>使用离散化</strong></p>
 <p>我们可以看到 $N$的范围是$2×10^5$，这很显然 能够让我们进行离散化</p>
 <p>详细的过程，看代码</p>
