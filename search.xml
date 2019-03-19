@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[七夕祭]]></title>
+    <url>%2F2019%2F03%2F19%2F%E4%B8%83%E5%A4%95%E7%A5%AD%2F</url>
+    <content type="text"><![CDATA[七夕节因牛郎织女的传说而被扣上了「情人节」的帽子。 于是TYVJ今年举办了一次线下七夕祭。 Vani同学今年成功邀请到了cl同学陪他来共度七夕，于是他们决定去TYVJ七夕祭游玩。 TYVJ七夕祭和11区的夏祭的形式很像。 矩形的祭典会场由N排M列共计$N×M$个摊点组成。 虽然摊点种类繁多，不过cl只对其中的一部分摊点感兴趣，比如章鱼烧、苹果糖、棉花糖、射的屋……什么的。 Vani预先联系了七夕祭的负责人zhq，希望能够通过恰当地布置会场，使得各行中cl感兴趣的摊点数一样多，并且各列中cl感兴趣的摊点数也一样多。 不过zhq告诉Vani，摊点已经随意布置完毕了，如果想满足cl的要求，唯一的调整方式就是交换两个相邻的摊点。 两个摊点相邻，当且仅当他们处在同一行或者同一列的相邻位置上。 由于zhq率领的TYVJ开发小组成功地扭曲了空间，每一行或每一列的第一个位置和最后一个位置也算作相邻。 现在Vani想知道他的两个要求最多能满足多少个。 在此前提下，至少需要交换多少次摊点。 输入格式第一行包含三个整数$N$和$M$和$T$，$T$表示$c$l对多少个摊点感兴趣。 接下来$T$行，每行两个整数$x, y$，表示$cl$对处在第$x$行第$y$列的摊点感兴趣。 输出格式首先输出一个字符串。 如果能满足Vani的全部两个要求，输出both； 如果通过调整只能使得各行中cl感兴趣的摊点数一样多，输出row； 如果只能使各列中cl感兴趣的摊点数一样多，输出column； 如果均不能满足，输出impossible。 如果输出的字符串不是impossible， 接下来输出最小交换次数，与字符串之间用一个空格隔开。 数据范围$1≤N,M≤100000$$0≤T≤min(N×M,100000)$$1≤x≤N$$1≤y≤M$ 输入样例：123452 3 41 32 12 22 3 输出样例：1row 1 题目题解：12345678910111213141516171819202122232425262728293031323334353637383940414243444546//#define fre yes#include &lt;cstdio&gt;#include &lt;algorithm&gt;const int N = 100005;int H[N], Z[N], f[N];// int hNumber, zNumber;long long clac(int a[N], int n) &#123; long long ans = 0; for (int i = 1; i &lt;= n; i++) &#123; a[i] -= a[0] / n; f[i] = f[i - 1] + a[i]; &#125; std::sort(f + 1, f + 1 + n); for (int i = 1; i &lt;= n; i++) &#123; ans += abs(f[i] - f[(n + 1) &gt;&gt; 1]); &#125; return ans;&#125;int main() &#123; static int n, m, k; scanf("%d %d %d", &amp;n, &amp;m, &amp;k); for (int i = 1, x, y; i &lt;= k; i++) &#123; scanf("%d %d", &amp;x, &amp;y); H[x]++, Z[y]++; &#125; for (int i = 1; i &lt;= n; i++) &#123; H[0] += H[i]; &#125; for (int i = 1; i &lt;= m; i++) &#123; Z[0] += Z[i]; &#125; if(H[0] % n == 0 &amp;&amp; Z[0] % m == 0) &#123; printf("both %lld\n", clac(H, n) + clac(Z, m)); &#125; else if(H[0] % n == 0) &#123; printf("row %lld\n", clac(H, n)); &#125; else if(Z[0] % m == 0) &#123; printf("column %lld\n", clac(Z, m)); &#125; else puts("impossible"); return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>中位数</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[货仓选址]]></title>
     <url>%2F2019%2F03%2F18%2F%E8%B4%A7%E4%BB%93%E9%80%89%E5%9D%80%2F</url>
     <content type="text"><![CDATA[在一条数轴上有 $N$ 家商店，它们的坐标分别为 $A_1-A_N$。 现在需要在数轴上建立一家货仓，每天清晨，从货仓到每家商店都要运送一车商品。 为了提高效率，求把货仓建在何处，可以使得货仓到每家商店的距离之和最小。 输入格式第一行输入整数$N$。 第二行$N$个整数$A_1-A_N$。 输出格式输出一个整数，表示距离之和的最小值。 数据范围$1≤N≤100000$ 输入样例：1246 2 9 1 输出样例：112 题目题解：这道题需要用到中位数的思想 中位数有一个特别优秀的性质就是每一个点到中位数的距离，都是满足全局的最优性，而不是局部最优性 于是我们可以得到代码： 12345678910111213141516171819202122232425//#define fre yes#include &lt;cstdio&gt;#include &lt;algorithm&gt;const int N = 100005;int g[N];int main() &#123; static int n; scanf("%d", &amp;n); for (int i = 1; i &lt;= n; i++) &#123; scanf("%d", &amp;g[i]); &#125; std::sort(g + 1, g + 1 + n); int ans = 0; for (int i = 1; i &lt;= n; i++) &#123; ans += abs(g[i] - g[(n + 1) / 2]); //为什么是(n+1)/2而不是n/2 //你可以自己带一个奇数和偶数试试（我们都是向下取整） &#125; printf("%d\n", ans); return 0;&#125;]]></content>
