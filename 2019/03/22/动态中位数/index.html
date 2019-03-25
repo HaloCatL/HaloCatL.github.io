@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="线性代数,递归,">
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="HaloCat_Blog">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta name="description" content="依次读入一个整数序列，每当已经读入的整数个数为奇数时，输出已读入的整数构成的序列的中位数。 输入格式第一行输入一个整数$P$，代表后面数据集的个数，接下来若干行输入各个数据集。 每个数据集的第一行首先输入一个代表数据集的编号的整数。 然后输入一个整数$M$，代表数据集中包含数据的个数，$M$一定为奇数，数据之间用空格隔开。 数据集的剩余行由数据集的数据构成，每行包含10个数据，最后一行数据量可能少">
+<meta name="keywords" content="线性代数,递归">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态中位数">
+<meta property="og:url" content="http://yoursite.com/2019/03/22/动态中位数/index.html">
 <meta property="og:site_name" content="HaloCat_Blog">
+<meta property="og:description" content="依次读入一个整数序列，每当已经读入的整数个数为奇数时，输出已读入的整数构成的序列的中位数。 输入格式第一行输入一个整数$P$，代表后面数据集的个数，接下来若干行输入各个数据集。 每个数据集的第一行首先输入一个代表数据集的编号的整数。 然后输入一个整数$M$，代表数据集中包含数据的个数，$M$一定为奇数，数据之间用空格隔开。 数据集的剩余行由数据集的数据构成，每行包含10个数据，最后一行数据量可能少">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-25T08:21:48.787Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HaloCat_Blog">
+<meta name="twitter:title" content="动态中位数">
+<meta name="twitter:description" content="依次读入一个整数序列，每当已经读入的整数个数为奇数时，输出已读入的整数构成的序列的中位数。 输入格式第一行输入一个整数$P$，代表后面数据集的个数，接下来若干行输入各个数据集。 每个数据集的第一行首先输入一个代表数据集的编号的整数。 然后输入一个整数$M$，代表数据集中包含数据的个数，$M$一定为奇数，数据之间用空格隔开。 数据集的剩余行由数据集的数据构成，每行包含10个数据，最后一行数据量可能少">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/3/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/22/动态中位数/">
 
 
 
 
 
-  <title>HaloCat_Blog</title>
+  <title>动态中位数 | HaloCat_Blog</title>
   
 
 
@@ -140,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -266,9 +270,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -281,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/17/快速幂/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/动态中位数/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HaloCat">
@@ -298,9 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/17/快速幂/" itemprop="url">快速幂</a></h1>
+          <h1 class="post-title" itemprop="name headline">动态中位数</h1>
         
 
         <div class="post-meta">
@@ -312,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-17T16:40:26+08:00">
-                2019-02-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T17:30:18+08:00">
+                2019-03-22
               </time>
             
 
@@ -366,7 +368,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  319
+                  758
                 </span>
               
 
@@ -382,7 +384,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -403,24 +405,22 @@
       
 
       
-        
-          
-          求 $a$ 的 $b$ 次方对 $p$ 取模的值。
-输入格式三个整数 $a,b,p$ ,在同一行用空格隔开。
-输出格式输出一个整数，表示a^b mod p的值。
-数据范围$1≤a,b,p≤10^9$
-输入样例：13 2 7
-输出样例：12
-题目题解若要直接算 $a^b$ 即计算 $b$ 遍，复杂度就
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/02/17/快速幂/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <p>依次读入一个整数序列，每当已经读入的整数个数为奇数时，输出已读入的整数构成的序列的中位数。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入一个整数$P$，代表后面数据集的个数，接下来若干行输入各个数据集。</p>
+<p>每个数据集的第一行首先输入一个代表数据集的编号的整数。</p>
+<p>然后输入一个整数$M$，代表数据集中包含数据的个数，$M$一定为奇数，数据之间用空格隔开。</p>
+<p>数据集的剩余行由数据集的数据构成，每行包含10个数据，最后一行数据量可能少于10个，数据之间用空格隔开。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每个数据集，第一行输出两个整数，分别代表数据集的编号以及输出中位数的个数（应为数据个数加一的二分之一），数据之间用空格隔开。</p>
+<p>数据集的剩余行由输出的中位数构成，每行包含10个数据，最后一行数据量可能少于10个，数据之间用空格隔开。</p>
+<p>输出中不应该存在空行。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>$1≤P≤1000$,<br>$1≤M≤9999$</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">3 </span><br><span class="line">1 9 </span><br><span class="line">1 2 3 4 5 6 7 8 9 </span><br><span class="line">2 9 </span><br><span class="line">9 8 7 6 5 4 3 2 1 </span><br><span class="line">3 23 </span><br><span class="line">23 41 13 22 -3 24 -31 -11 -8 -7 </span><br><span class="line">3 5 103 211 -311 -45 -67 -73 -81 -99 </span><br><span class="line">-33 24 56</span><br></pre></td></tr></table></figure>
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1 5</span><br><span class="line">1 2 3 4 5</span><br><span class="line">2 5</span><br><span class="line">9 8 7 6 5</span><br><span class="line">3 12</span><br><span class="line">23 23 22 22 13 3 5 5 3 -3 </span><br><span class="line">-7 -3</span><br></pre></td></tr></table></figure>
+<h4 id="题目题解："><a href="#题目题解：" class="headerlink" title="题目题解："></a>题目题解：</h4><p>第一次发现可以这么解决..</p>
+<p>我们需要维护两个堆，一个小顶堆，一个大顶堆 ，小顶堆中储存比当前中位数大的数，大顶堆中储存比当前中位数小的数。这里要注意，我们要优先满足小根堆的最小值，于是，如果大顶堆的数目大于小顶堆的话，就要立刻转移，但是如果小顶堆的数目大于大顶堆的话，我们尽可能的晚一点转移，这样就能保证我们最后的答案正确。</p>
+<p>剩下的看代码吧。。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#define fre yes</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::priority_queue&lt;<span class="keyword">int</span>, <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;, <span class="built_in">std</span>::greater&lt;<span class="keyword">int</span>&gt; &gt; right, UpdateR; <span class="comment">//小顶堆</span></span><br><span class="line"><span class="built_in">std</span>::priority_queue&lt;<span class="keyword">int</span>&gt; left, UpdateL; <span class="comment">//大顶堆</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> T, n, m;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;m);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, n, (m + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        right = UpdateR;</span><br><span class="line">        left = UpdateL;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, x; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">            <span class="keyword">if</span>(right.empty()) &#123; <span class="comment">//第一个数一定放在小顶堆中</span></span><br><span class="line">                right.push(x);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(x &gt; right.top()) &#123;</span><br><span class="line">                    right.push(x);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    left.push(x);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span>(right.size() &lt; left.size()) &#123; <span class="comment">//立刻转移</span></span><br><span class="line">                    right.push(left.top());</span><br><span class="line">                    left.pop();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span>(left.size() + <span class="number">1</span> &lt; right.size()) &#123; <span class="comment">//尽可能晚一点转移</span></span><br><span class="line">                    left.push(right.top());</span><br><span class="line">                    right.pop();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(i &amp; <span class="number">1</span>) &#123;</span><br><span class="line">                cnt++;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d "</span>, right.top());</span><br><span class="line">                <span class="keyword">if</span>(!(cnt % <span class="number">10</span>)) <span class="built_in">puts</span>(<span class="string">""</span>); <span class="comment">//一排10个 别忘了</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">    &#125; <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -435,172 +435,38 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/31/hello-world/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HaloCat">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HaloCat_Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/31/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-31T10:53:55+08:00">
-                2019-01-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/线性代数/" rel="tag"># 线性代数</a>
           
-            
+            <a href="/tags/递归/" rel="tag"># 递归</a>
           
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  8
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          
-          2019年2月12日，你好，世界！
-
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/31/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/21/19年3月21日-竞赛小测/" rel="next" title="19年3月21日 竞赛小测">
+                <i class="fa fa-chevron-left"></i> 19年3月21日 竞赛小测
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -610,14 +476,11 @@
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -625,6 +488,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -645,8 +515,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -708,6 +587,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入格式"><span class="nav-number">1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出格式"><span class="nav-number">2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据范围"><span class="nav-number">3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入样例："><span class="nav-number">4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出样例："><span class="nav-number">5.</span> <span class="nav-text">输出样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题目题解："><span class="nav-number">6.</span> <span class="nav-text">题目题解：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -857,6 +752,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
