@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="HaloCat_Blog">
 <meta property="og:description" content="你一定玩过八数码游戏，它实际上是在一个$3×3$的网格中进行的,1个空格和1~8这8个数字恰好不重不漏地分布在这$3×3$的网格中。 例如： 1235 2 81 3 _4 6 7 在游戏过程中，可以把空格与其上、下、左、右四个方向之一的数字交换（如果存在）。 例如在上例中，空格可与左、上、下面的数字交换，分别变成： 1235 2 8       5 2 _      5 2 81 _ 3">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-31T03:57:59.252Z">
+<meta property="og:updated_time" content="2019-03-31T03:59:38.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="奇数码问题">
 <meta name="twitter:description" content="你一定玩过八数码游戏，它实际上是在一个$3×3$的网格中进行的,1个空格和1~8这8个数字恰好不重不漏地分布在这$3×3$的网格中。 例如： 1235 2 81 3 _4 6 7 在游戏过程中，可以把空格与其上、下、左、右四个方向之一的数字交换（如果存在）。 例如在上例中，空格可与左、上、下面的数字交换，分别变成： 1235 2 8       5 2 _      5 2 81 _ 3">
@@ -418,7 +418,7 @@
 <p>第1行输入一个整数$n$，$n$为奇数。</p>
 <p>接下来$n$行每行$n$个整数，表示第一个局面。</p>
 <p>再接下来$n$行每行$n$个整数，表示第二个局面。</p>
-<p>局面中每个整数都是$0~n^2−1$之一，其中用$0$代表空格，其余数值与奇数码游戏中的意义相同，保证这些整数的分布不重不漏。</p>
+<p>局面中每个整数都是$0$到$n^2−1$之一，其中用$0$代表空格，其余数值与奇数码游戏中的意义相同，保证这些整数的分布不重不漏。</p>
 <h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每组数据，若两个局面可达，输出TAK，否则输出NIE。</p>
 <h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>$1≤n&lt;500$</p>
 <h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 2 3</span><br><span class="line">0 4 6</span><br><span class="line">7 5 8</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 0</span><br><span class="line">1</span><br><span class="line">0</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
