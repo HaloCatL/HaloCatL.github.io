@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="递推,数论,">
+  <meta name="keywords" content="归并排序,奇偶性,逆序对,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="假设现在有两个自然数A和B，S是$A^B$的所有约数之和。 请你求出S mod 9901的值是多少。 输入格式在一行中输入用空格隔开的两个整数A和B。 输出格式输出一个整数，代表S mod 9901的值。 数据范围$0≤A,B≤5×10^7$ 输入样例：12 3 输出样例：115 注意: A和B不会同时为0。 题目题解：这个题需要三个新知识： 质因数分解任何一个数 $x$ 都能分解为 $x = $">
-<meta name="keywords" content="递推,数论">
+<meta name="description" content="你一定玩过八数码游戏，它实际上是在一个$3×3$的网格中进行的,1个空格和1~8这8个数字恰好不重不漏地分布在这$3×3$的网格中。 例如： 1235 2 81 3 _4 6 7 在游戏过程中，可以把空格与其上、下、左、右四个方向之一的数字交换（如果存在）。 例如在上例中，空格可与左、上、下面的数字交换，分别变成： 1235 2 8       5 2 _      5 2 81 _ 3">
+<meta name="keywords" content="归并排序,奇偶性,逆序对">
 <meta property="og:type" content="article">
-<meta property="og:title" content="约数之和">
-<meta property="og:url" content="http://yoursite.com/2019/02/23/约数之和/index.html">
+<meta property="og:title" content="奇数码问题">
+<meta property="og:url" content="http://yoursite.com/2019/03/31/奇数码问题/index.html">
 <meta property="og:site_name" content="HaloCat_Blog">
-<meta property="og:description" content="假设现在有两个自然数A和B，S是$A^B$的所有约数之和。 请你求出S mod 9901的值是多少。 输入格式在一行中输入用空格隔开的两个整数A和B。 输出格式输出一个整数，代表S mod 9901的值。 数据范围$0≤A,B≤5×10^7$ 输入样例：12 3 输出样例：115 注意: A和B不会同时为0。 题目题解：这个题需要三个新知识： 质因数分解任何一个数 $x$ 都能分解为 $x = $">
+<meta property="og:description" content="你一定玩过八数码游戏，它实际上是在一个$3×3$的网格中进行的,1个空格和1~8这8个数字恰好不重不漏地分布在这$3×3$的网格中。 例如： 1235 2 81 3 _4 6 7 在游戏过程中，可以把空格与其上、下、左、右四个方向之一的数字交换（如果存在）。 例如在上例中，空格可与左、上、下面的数字交换，分别变成： 1235 2 8       5 2 _      5 2 81 _ 3">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-14T06:28:52.745Z">
+<meta property="og:updated_time" content="2019-03-31T03:55:45.333Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="约数之和">
-<meta name="twitter:description" content="假设现在有两个自然数A和B，S是$A^B$的所有约数之和。 请你求出S mod 9901的值是多少。 输入格式在一行中输入用空格隔开的两个整数A和B。 输出格式输出一个整数，代表S mod 9901的值。 数据范围$0≤A,B≤5×10^7$ 输入样例：12 3 输出样例：115 注意: A和B不会同时为0。 题目题解：这个题需要三个新知识： 质因数分解任何一个数 $x$ 都能分解为 $x = $">
+<meta name="twitter:title" content="奇数码问题">
+<meta name="twitter:description" content="你一定玩过八数码游戏，它实际上是在一个$3×3$的网格中进行的,1个空格和1~8这8个数字恰好不重不漏地分布在这$3×3$的网格中。 例如： 1235 2 81 3 _4 6 7 在游戏过程中，可以把空格与其上、下、左、右四个方向之一的数字交换（如果存在）。 例如在上例中，空格可与左、上、下面的数字交换，分别变成： 1235 2 8       5 2 _      5 2 81 _ 3">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/23/约数之和/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/31/奇数码问题/">
 
 
 
 
 
-  <title>约数之和 | HaloCat_Blog</title>
+  <title>奇数码问题 | HaloCat_Blog</title>
   
 
 
@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/23/约数之和/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/奇数码问题/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HaloCat">
@@ -302,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">约数之和</h1>
+          <h1 class="post-title" itemprop="name headline">奇数码问题</h1>
         
 
         <div class="post-meta">
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-23T20:39:36+08:00">
-                2019-02-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-31T10:58:33+08:00">
+                2019-03-31
               </time>
             
 
@@ -368,7 +368,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  606
+                  1.7k
                 </span>
               
 
@@ -384,7 +384,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  7
                 </span>
               
             </div>
@@ -405,31 +405,58 @@
       
 
       
-        <p>假设现在有两个自然数A和B，S是$A^B$的所有约数之和。</p>
-<p>请你求出S mod 9901的值是多少。</p>
-<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>在一行中输入用空格隔开的两个整数A和B。</p>
-<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，代表S mod 9901的值。</p>
-<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>$0≤A,B≤5×10^7$</p>
-<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 3</span><br></pre></td></tr></table></figure>
-<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">15</span><br></pre></td></tr></table></figure>
-<p><strong>注意</strong>: A和B不会同时为0。</p>
-<h4 id="题目题解："><a href="#题目题解：" class="headerlink" title="题目题解："></a>题目题解：</h4><p>这个题需要三个新知识：</p>
-<h5 id="质因数分解"><a href="#质因数分解" class="headerlink" title="质因数分解"></a>质因数分解</h5><p>任何一个数 $x$ 都能分解为 $x = $$\prod ^k_{i=1}{p_i}^{a_i}$</p>
-<h5 id="约数个数定理"><a href="#约数个数定理" class="headerlink" title="约数个数定理"></a>约数个数定理</h5><p>那么根据质因数分解的数，我们就可以得到总的约数个数为 $f(n) = $$\prod ^{k}_{i=1}(a_i + 1)$，那么根据这样，我们就可以得到约数的个数的数量</p>
-<p>很好证明，因为$p^n$的约数有$p^0, p^1, p^2, … , p^n$ 即个数为$(n + 1)$</p>
-<h5 id="约数定理"><a href="#约数定理" class="headerlink" title="约数定理"></a>约数定理</h5><p>$n$的$\prod ^n_{i=1}(a_i + 1)$个正约数的和为：</p>
-<p>$\prod ^k_{i = 1}\sum ^k_{j = 0}(p^j_i) $</p>
-<p>因为这样算复杂度太高，我们需要将式子简单化一下。</p>
-<p>对于这道题，约数定理就有 $A^B$ 的约数和为：</p>
-<p>$\prod ^k_{i = 1}\sum ^{k×B}_{j = 0}(p^j_i) $</p>
-<p>定义<code>sum(n, k)</code>为$p^0 + p^1 + … + p^k$，分为两部分的和为</p>
-<p>$(p ^ 0 + … + p^{\frac{k}{2}}) + (p ^ {\frac{k}{2} + 1} + … + p ^ k)$</p>
-<p>右边的式子可以提一个公因数 $p^{\frac{k}{2}} + 1$</p>
-<p>于是就变成了 $(p ^ 0 + … + p ^ {\frac{k}{2}}) × (p ^ {\frac{k}{2}} + 1)$</p>
-<p>于是就得到了<script type="math/tex">sum(n, \frac{k}{2}) × (p ^ {\frac{k}{2}} + 1)</script></p>
-<p>于是我们只用算后面的式子，前面有递归解决即可</p>
-<p>这里需要注意，我们只有偶数次方能这么算，如果是奇数次方，我们将一个n暴力算出来，然后再用上面的方法算即可</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#define fre yes</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">9901</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qmi</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    a %= MOD;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(k) &#123;</span><br><span class="line">        <span class="keyword">if</span>(k &amp; <span class="number">1</span>) res = res * a % MOD;</span><br><span class="line">        a = a * a % MOD;</span><br><span class="line">        k &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(k == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(!(k &amp; <span class="number">1</span>)) <span class="keyword">return</span> (p % MOD * sum(p, k - <span class="number">1</span>) + <span class="number">1</span>) % MOD;</span><br><span class="line">    <span class="keyword">return</span> (<span class="number">1</span> + qmi(p, k / <span class="number">2</span> + <span class="number">1</span>)) * sum(p, k / <span class="number">2</span>) % MOD;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> A, B;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;A, &amp;B);</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= A; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> s = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(A % i == <span class="number">0</span>) &#123;</span><br><span class="line">            s++;</span><br><span class="line">            A /= i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(s) res = res * sum(i, s * B) % MOD;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!A) res = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>你一定玩过八数码游戏，它实际上是在一个$3×3$的网格中进行的,1个空格和1~8这8个数字恰好不重不漏地分布在这$3×3$的网格中。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">5 2 8</span><br><span class="line">1 3 _</span><br><span class="line">4 6 7</span><br></pre></td></tr></table></figure>
+<p>在游戏过程中，可以把空格与其上、下、左、右四个方向之一的数字交换（如果存在）。</p>
+<p>例如在上例中，空格可与左、上、下面的数字交换，分别变成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">5 2 8       5 2 _      5 2 8</span><br><span class="line">1 _ 3       1 3 8      1 3 7</span><br><span class="line">4 6 7       4 6 7      4 6 _</span><br></pre></td></tr></table></figure>
+<p>奇数码游戏是它的一个扩展，在一个$n×n$的网格中进行，其中$n$为奇数，1个空格和$1~n^2−1$这$n^2−1$个数恰好不重不漏地分布在$n×n$的网格中。</p>
+<p>空格移动的规则与八数码游戏相同，实际上，八数码就是一个$n=3$的奇数码游戏。</p>
+<p>现在给定两个奇数码游戏的局面，请判断是否存在一种移动空格的方式，使得其中一个局面可以变化到另一个局面。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>多组数据，对于每组数据：</p>
+<p>第1行输入一个整数$n$，$n$为奇数。</p>
+<p>接下来$n$行每行$n$个整数，表示第一个局面。</p>
+<p>再接下来$n$行每行$n$个整数，表示第二个局面。</p>
+<p>局面中每个整数都是$0~n^2−1$之一，其中用$0$代表空格，其余数值与奇数码游戏中的意义相同，保证这些整数的分布不重不漏。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>对于每组数据，若两个局面可达，输出TAK，否则输出NIE。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>$1≤n&lt;500$</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 2 3</span><br><span class="line">0 4 6</span><br><span class="line">7 5 8</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 0</span><br><span class="line">1</span><br><span class="line">0</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TAK</span><br><span class="line">TAK</span><br></pre></td></tr></table></figure>
+<h4 id="题目题解："><a href="#题目题解：" class="headerlink" title="题目题解："></a>题目题解：</h4><p>这个题不难想，但是如果没做过类似的题，可能想不到这里去，这道题需要用 <strong>奇偶性</strong></p>
+<p>奇偶性很神奇，对于一类问题，如果属于同种性质（奇偶性相同），那么它们就是完全相同（这个在某种意义上说）的，一些特殊的情况又例外，对于这道题，我们用题目给的例子来讲解。 为了好看，这里我使用 <strong>#</strong> 来表示空格方块 （左边图我们编号为①）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3       1 2 3</span><br><span class="line"># 4 6       4 5 6</span><br><span class="line">7 5 8       7 8 #</span><br></pre></td></tr></table></figure>
+<p>我们将左边的图形空格移动到上面 （编个号②）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 2 3</span><br><span class="line">1 4 6</span><br><span class="line">7 5 8</span><br></pre></td></tr></table></figure>
+<p>再移动到右边（编个号③）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2 # 3</span><br><span class="line">1 4 6</span><br><span class="line">7 5 8</span><br></pre></td></tr></table></figure>
+<p>好，这是两种移动方式，我们再回到初图，看看其他情况<br>将初图的图形空格移动到下面（编个号④）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3</span><br><span class="line">7 4 6</span><br><span class="line"># 5 8</span><br></pre></td></tr></table></figure>
+<p>再向右移动（编个号⑤）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3</span><br><span class="line">7 4 6</span><br><span class="line">5 # 8</span><br></pre></td></tr></table></figure>
+<p>然后对于这个图形，我们拉直来看（从左到右，从上到下，把二维拉成一维）<br>下面所展示的是上面从上到下所造成的一维图形 （即①②③④⑤按顺序来）</p>
+<p>①：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 # 4 6 7 5 8</span><br></pre></td></tr></table></figure>
+<p>②：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 2 3 1 4 6 7 5 8</span><br></pre></td></tr></table></figure>
+<p>③：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 # 3 1 4 6 7 5 8</span><br></pre></td></tr></table></figure>
+<p>④：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 7 4 6 # 5 8</span><br></pre></td></tr></table></figure>
+<p>⑤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 7 4 6 5 # 8</span><br></pre></td></tr></table></figure>
+<p>我们可以由①②④得到</p>
+<p><strong>空格向上下移动需要遍历过三个数字</strong></p>
+<p>由①③⑤得到与推出</p>
+<p><strong>空格向左右移动需要遍历过一个数字</strong></p>
+<p>到此基础的看题入手的思路就完成了<strong>（一些移动问题都可以弄成一维来看，环的话可以断成链来考虑）</strong>，接下来就是使用一些算法来解决我们的当前需要解决的问题，因为我们这里根据<strong>移动三个数字，移动一个数字</strong>来考虑的话，就是需要一个计数类的算法来解决，目前所学到的针对一维数列的有…只有<strong>逆序对</strong>（后面学到新的我会回来补为什么不选其他的）</p>
+<p>那么我们就针对逆序对来思考这道题，首先我们先将逆序对的数量算出来（不考虑空格位置）</p>
+<p>①：2    ②：4    ③：4   ④：4   ⑤：4</p>
+<p>先针对①②③，我们发现 <strong>左右移动完全不改变逆序对个数，而上下移动并不改变逆序对的奇偶性</strong>（这里为了节省时间不列举更多的例子，需要更深入的理解请自行再多次进行移动操作）</p>
+<p>再针对①④⑤，我们发现也是如此</p>
+<p>那么我们只需要使初始图形的逆序对个数和结束图形的逆序对个数相同，就一定有一种方案可以将初始图形改变到结束图形，反之则不可以。（到此，结束） （这里如果不理解<strong>为什么逆序对（奇偶性）相同就一定能拼到最终图形</strong>，有两种方案可以解除你的疑问 ①：<strong>自欺欺人记结论法</strong>还记得我之前说，一些问题如果奇偶性相同那么里面涉及的问题都是等价的吗，这里也可以这么做 ②：<strong>小小的列举法</strong>，我们这里每个数都可以进行移动，因为每次移动一次或者三次，那么一定可以遍历完所有的数与可以让所有的数移动，或者你可以等价成数字之间的移动，这样的话每个数字都一定能够移动，每次移动奇偶性一定是不变的，所以可以证得，如果奇偶性相同一定能从初状态转移到末状态，反之则不可以）</p>
+<p>剩下的，看代码吧！</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#define fre yes</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">510</span> * <span class="number">510</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> b[N], c[N], q[N];</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>* a, <span class="keyword">int</span> l, <span class="keyword">int</span> mid, <span class="keyword">int</span> r)</span> </span>&#123; <span class="comment">//归并排序求逆序对</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= r; i++) &#123;</span><br><span class="line">        q[i] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> i = l, j = mid + <span class="number">1</span>, k = l;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r) &#123;</span><br><span class="line">        <span class="keyword">if</span>(q[i] &lt;= q[j]) &#123;</span><br><span class="line">           a[k++] = q[i++]; </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            a[k++] = q[j++];</span><br><span class="line">            cnt += mid - i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid) a[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r) a[k++] = q[j++];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>* a, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123; <span class="comment">//归并排序求逆序对 不知道的请看超快速排序</span></span><br><span class="line">    <span class="keyword">if</span>(l &lt; r) &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">        mergeSort(a, l, mid);</span><br><span class="line">        mergeSort(a, mid + <span class="number">1</span>, r);</span><br><span class="line">        merge(a, l, mid, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> k, Sum;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k) != EOF) &#123;</span><br><span class="line">        Sum = <span class="number">0</span>; cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, x; i &lt;= k * k; i++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">            <span class="keyword">if</span>(x != <span class="number">0</span>) b[++Sum] = x; <span class="comment">//取出空格之后，将所有数塞进去</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> res_a, res_b;</span><br><span class="line">        mergeSort(b, <span class="number">1</span>, k * k - <span class="number">1</span>); <span class="comment">//进行第一次归排</span></span><br><span class="line">        res_a = cnt;</span><br><span class="line"></span><br><span class="line">        Sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, x; i &lt;= k * k; i++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">            <span class="keyword">if</span>(x != <span class="number">0</span>) c[++Sum] = x; <span class="comment">//同上</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cnt = <span class="number">0</span>;</span><br><span class="line">        mergeSort(c, <span class="number">1</span>, k * k - <span class="number">1</span>); <span class="comment">//进行第二次归排</span></span><br><span class="line">        res_b = cnt;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">std</span>::<span class="built_in">abs</span>(res_a - res_b) % <span class="number">2</span>) &#123; <span class="comment">//你可以用其他的方法，这里就是证明两个奇偶性是否相同</span></span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"NIE"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"TAK"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -447,9 +474,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/递推/" rel="tag"># 递推</a>
+            <a href="/tags/归并排序/" rel="tag"># 归并排序</a>
           
-            <a href="/tags/数论/" rel="tag"># 数论</a>
+            <a href="/tags/奇偶性/" rel="tag"># 奇偶性</a>
+          
+            <a href="/tags/逆序对/" rel="tag"># 逆序对</a>
           
         </div>
       
@@ -462,8 +491,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/20/想要发泄一下/" rel="next" title="想要发泄一下">
-                <i class="fa fa-chevron-left"></i> 想要发泄一下
+              <a href="/2019/03/27/超快速排序/" rel="next" title="超快速排序">
+                <i class="fa fa-chevron-left"></i> 超快速排序
               </a>
             
           </div>
@@ -471,10 +500,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/27/分形之城/" rel="prev" title="分形之城">
-                分形之城 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -611,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入格式"><span class="nav-number">1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出格式"><span class="nav-number">2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据范围"><span class="nav-number">3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入样例："><span class="nav-number">4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出样例："><span class="nav-number">5.</span> <span class="nav-text">输出样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题目题解："><span class="nav-number">6.</span> <span class="nav-text">题目题解：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#质因数分解"><span class="nav-number">6.1.</span> <span class="nav-text">质因数分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#约数个数定理"><span class="nav-number">6.2.</span> <span class="nav-text">约数个数定理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#约数定理"><span class="nav-number">6.3.</span> <span class="nav-text">约数定理</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入格式"><span class="nav-number">1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出格式"><span class="nav-number">2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据范围"><span class="nav-number">3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入样例："><span class="nav-number">4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出样例："><span class="nav-number">5.</span> <span class="nav-text">输出样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题目题解："><span class="nav-number">6.</span> <span class="nav-text">题目题解：</span></a></li></ol></div>
             
 
           </div>
