@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="HaloCat_Blog">
 <meta property="og:description" content="有C头奶牛进行日光浴，第i头奶牛需要minSPF[i]到maxSPF[i]单位强度之间的阳光。 每头奶牛在日光浴前必须涂防晒霜，防晒霜有L种，涂上第i种之后，身体接收到的阳光强度就会稳定为SPF[i]，第i种防晒霜有cover[i]瓶。 求最多可以满足多少头奶牛进行日光浴。 输入格式第一行输入整数C和L。 接下来的C行，按次序每行输入一头牛的minSPF和maxSPF值,即第i行输入minSPF[">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-08T06:45:26.148Z">
+<meta property="og:updated_time" content="2019-04-09T07:07:31.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="防晒">
 <meta name="twitter:description" content="有C头奶牛进行日光浴，第i头奶牛需要minSPF[i]到maxSPF[i]单位强度之间的阳光。 每头奶牛在日光浴前必须涂防晒霜，防晒霜有L种，涂上第i种之后，身体接收到的阳光强度就会稳定为SPF[i]，第i种防晒霜有cover[i]瓶。 求最多可以满足多少头奶牛进行日光浴。 输入格式第一行输入整数C和L。 接下来的C行，按次序每行输入一头牛的minSPF和maxSPF值,即第i行输入minSPF[">
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  1.2k
                 </span>
               
 
@@ -426,7 +426,13 @@
 <h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>$1≤C,L≤2500,$<br>$1≤minSPF≤maxSPF≤1000,$<br>$1≤SPF≤1000$</p>
 <h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">3 2</span><br><span class="line">3 10</span><br><span class="line">2 5</span><br><span class="line">1 5</span><br><span class="line">6 2</span><br><span class="line">4 1</span><br></pre></td></tr></table></figure>
 <h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
-<h4 id="题目题解："><a href="#题目题解：" class="headerlink" title="题目题解："></a>题目题解：</h4><h5 id="证明："><a href="#证明：" class="headerlink" title="证明："></a>证明：</h5><p>此题证明需要用到<strong>增广路</strong>来作为理论依据，增广路中我们需要用到<strong>最短增广路</strong></p>
+<h4 id="题目题解："><a href="#题目题解：" class="headerlink" title="题目题解："></a>题目题解：</h4><h5 id="做法："><a href="#做法：" class="headerlink" title="做法："></a>做法：</h5><ul>
+<li><p>将牛按最小SPF从大到小排序，将防晒霜从大到小排序</p>
+</li>
+<li><p>然后将防晒霜依次分配给牛，大的优先分配给大的</p>
+</li>
+</ul>
+<h5 id="证明："><a href="#证明：" class="headerlink" title="证明："></a>证明：</h5><p>此题证明需要用到<strong>增广路</strong>来作为理论依据，增广路中我们需要用到<strong>最短增广路</strong></p>
 <p>首先，我们先将此题的模型转化，此题可以转化成<strong>线与点</strong>的有关模型，牛可以转化为线，给的SPF可以转化为点，那么我们借于<strong>点和线</strong>的关系，我们就可以将其转化为一个二分图最大匹配的有关问题（不了解二分图最大匹配的可以先去学习一下匈牙利算法，此算法专门用于解决二分图最大匹配，此篇因为篇幅有限，不再阐述此算法，后面学习到的时候会专门写出来），那么转化为二分图的问题之后，我们就可以用我们的<strong>增广路</strong>性质了</p>
 <p><a href="https://baike.baidu.com/item/%E5%A2%9E%E5%B9%BF%E8%B7%AF/1332250?fr=aladdin" target="_blank" rel="noopener">增广路的定义</a>（详细请了解有关增广路的五条结论）</p>
 <p>假设我们此时存在增广路，那么我们来看最短的一条增广路，为了方便，我们用 $C_i$ 表示第 $i$ 头牛，用 $S_i$ 表示第 $i$ 个防晒霜。</p>
@@ -484,6 +490,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/09/畜栏预定/" rel="prev" title="畜栏预定">
+                畜栏预定 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -565,7 +575,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -620,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入格式"><span class="nav-number">1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出格式"><span class="nav-number">2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据范围"><span class="nav-number">3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入样例："><span class="nav-number">4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出样例："><span class="nav-number">5.</span> <span class="nav-text">输出样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题目题解："><span class="nav-number">6.</span> <span class="nav-text">题目题解：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#证明："><span class="nav-number">6.1.</span> <span class="nav-text">证明：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入格式"><span class="nav-number">1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出格式"><span class="nav-number">2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据范围"><span class="nav-number">3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入样例："><span class="nav-number">4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出样例："><span class="nav-number">5.</span> <span class="nav-text">输出样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题目题解："><span class="nav-number">6.</span> <span class="nav-text">题目题解：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#做法："><span class="nav-number">6.1.</span> <span class="nav-text">做法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#证明："><span class="nav-number">6.2.</span> <span class="nav-text">证明：</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -654,7 +664,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">24k</span>
+    <span title="Site words total count">24.9k</span>
   
 </div>
 

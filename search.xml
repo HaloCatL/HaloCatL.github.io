@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[畜栏预定]]></title>
+    <url>%2F2019%2F04%2F09%2F%E7%95%9C%E6%A0%8F%E9%A2%84%E5%AE%9A%2F</url>
+    <content type="text"><![CDATA[有$N$头牛在畜栏中吃草。 每个畜栏在同一时间段只能提供给一头牛吃草，所以可能会需要多个畜栏。 给定$N$头牛和每头牛开始吃草的时间$A$以及结束吃草的时间$B$，每头牛在$[A,B]$这一时间段内都会一直吃草。 当两头牛的吃草区间存在交集时（包括端点），这两头牛不能被安排在同一个畜栏吃草。 求需要的最小畜栏数目和每头牛对应的畜栏方案。 输入格式第$1$行：输入一个整数$N$。 第$2..N+1$行：第$i+1$行输入第$i$头牛的开始吃草时间$A$以及结束吃草时间$B$，数之间用空格隔开。 输出格式第$1$行：输入一个整数，代表所需最小畜栏数。 第$2..N+1$行：第$i+1$行输入第i头牛被安排到的畜栏编号，编号从$1$开始，只要方案合法即可。 数据范围$1≤N≤50000,$$1≤A,B≤1000000$ 输入样例：12345651 102 43 65 84 7 输出样例：123456412324 题目题解：做法： 将所有牛按开始吃草的时间排序 用小根堆维护当前畜栏的最后一头牛的吃草结束时间（此时一定是结束时间最晚的牛在根堆堆顶） 如果当前的牛可以安排在堆顶的畜栏中，则将其安排进去，更新结束时间，否则就新建一个畜栏 给出证明： 假设我们现在存在一种方案，使得需要的畜栏数量更少，记其需要的畜栏数量为 $m$ 考虑上述做法中，第一次新建第 $m + 1$ 个畜栏的时刻，不妨设当前处理的是第 $i$ 头牛 为了证明方便，我们先将所有牛按开始时时间从小到大进行排序，所以现在前 $m$ 个畜栏中最后一头牛的开始时间一定是小于等于第 $i$ 头牛的开始时间。 而且前 $m$ 个畜栏中最小的结束时间大于等于第 $i$ 头牛的开始时间，所以前 $m$ 个畜栏里最后一头牛的吃草区间一定都包含第 $i$ 头牛的开始时间，所以我们就找到了 $m + 1$ 个区间存在交集，所以至少需要 $m + 1​$ 个畜栏，矛盾 所以上述做法可以得到最优解，解毕 代码如下… 123456789101112131415161718192021222324252627282930313233343536373839404142434445//#define fre yes#include &lt;queue&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#include &lt;iostream&gt;#include &lt;algorithm&gt;const int N = 50005;typedef std::pair&lt;int, int&gt; PII;std::pair&lt;PII, int&gt; cows[N];int id[N];int main() &#123; static int n; scanf("%d", &amp;n); for (int i = 1, x, y; i &lt;= n; i++) &#123; scanf("%d %d", &amp;x, &amp;y); cows[i].first.first = x, cows[i].first.second = y; cows[i].second = i; &#125; std::sort(cows + 1, cows + 1 + n); std::priority_queue&lt;PII, std::vector&lt;PII&gt;, std::greater&lt;PII&gt; &gt; heap; for (int i = 1; i &lt;= n; i++) &#123; if(heap.empty() || cows[i].first.first &lt;= heap.top().first) &#123; PII stall = &#123;cows[i].first.second, heap.size()&#125;; id[cows[i].second] = stall.second; heap.push(stall); &#125; else &#123; PII stall = heap.top(); heap.pop(); stall.first = cows[i].first.second; id[cows[i].second] = stall.second; heap.push(stall); &#125; &#125; printf("%d\n", heap.size()); for (int i = 1; i &lt;= n; i++) &#123; printf("%d\n", id[i] + 1); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[防晒]]></title>
     <url>%2F2019%2F04%2F08%2F%E9%98%B2%E6%99%92%2F</url>
-    <content type="text"><![CDATA[有C头奶牛进行日光浴，第i头奶牛需要minSPF[i]到maxSPF[i]单位强度之间的阳光。 每头奶牛在日光浴前必须涂防晒霜，防晒霜有L种，涂上第i种之后，身体接收到的阳光强度就会稳定为SPF[i]，第i种防晒霜有cover[i]瓶。 求最多可以满足多少头奶牛进行日光浴。 输入格式第一行输入整数C和L。 接下来的C行，按次序每行输入一头牛的minSPF和maxSPF值,即第i行输入minSPF[i]和maxSPF[i]。 再接下来的L行，按次序每行输入一种防晒霜的SPF和cover值,即第i行输入SPF[i]和cover[i]。 每行的数据之间用空格隔开。 输出格式输出一个整数，代表最多可以满足奶牛日光浴的奶牛数目。 数据范围$1≤C,L≤2500,$$1≤minSPF≤maxSPF≤1000,$$1≤SPF≤1000$ 输入样例：1234563 23 102 51 56 24 1 输出样例：12 题目题解：证明：此题证明需要用到增广路来作为理论依据，增广路中我们需要用到最短增广路 首先，我们先将此题的模型转化，此题可以转化成线与点的有关模型，牛可以转化为线，给的SPF可以转化为点，那么我们借于点和线的关系，我们就可以将其转化为一个二分图最大匹配的有关问题（不了解二分图最大匹配的可以先去学习一下匈牙利算法，此算法专门用于解决二分图最大匹配，此篇因为篇幅有限，不再阐述此算法，后面学习到的时候会专门写出来），那么转化为二分图的问题之后，我们就可以用我们的增广路性质了 增广路的定义（详细请了解有关增广路的五条结论） 假设我们此时存在增广路，那么我们来看最短的一条增广路，为了方便，我们用 $C_i$ 表示第 $i$ 头牛，用 $S_i$ 表示第 $i$ 个防晒霜。 假设我们此时选择的最短增广路是 $S_{i_0} -&gt; C_{i_1}-&gt;S_{i_2} -&gt; C_{i_3}-&gt;…-&gt;C_k $ 此时$S_{i_0}$与$C_{i_k}$均是不在匹配中的点。 我们考虑增广路径的起点 $S_{i_0}$ 可以发现： $S_{i_0} ≤ S_{i_2}$，这是因为我们每次会给每头奶牛匹配一个符合条件的尽可能大的防晒霜（为什么？ 增广路性质）（从这里我们能得到牛一定是从大到小，防晒霜一定是从大到小 以上两种依次匹配） $i_1 &gt; i_3$，如果 $i_1 &lt; i_3$，我们就能将 $c_{i_1}$ 和 $s_{i_2}$ 从增广路中删除（因为不满足最短增广路定义），此时就和我们定义的最短增广路所冲突 （从这里我们能得到该序列一定是单调的（排序可得）） 根据上面的推论，同理，我们推导后面一样可以得到 $S_{i_j} ≤ S_{i_j + 2}$ $i_j &gt; i_{j + 2}$ 所以可得 $i_{k - 2} &gt; i_k$，所以在上述做法中，我们一定会先枚举到$C_{i_k}$再枚举到$C_{i_{k - 2}}$，与 $C_{i_k}$没有匹配到任何防晒霜相矛盾（因为我们先枚举大的后枚举小的），所以上述做法一定不存在增广路径，所以上述做法得到的匹配一定是最大匹配 由此我们可以得到，一定是按牛的$MinSPF$从大到小排序，然后与防晒霜依次匹配（防晒霜也是从大到小，因为此时符合我们的最短增广路） 代码如下…. 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950//#define fre yes#include &lt;cstdio&gt;#include &lt;algorithm&gt;const int N = 2505;struct Node &#123; int MaxSPF, MinSPF;&#125; cow[N];struct Mesr &#123; int Spf, Cover;&#125; SPF[N];bool cmp1(Node x, Node y) &#123; return x.MinSPF &gt; y.MinSPF;&#125;bool cmp2(Mesr x, Mesr y) &#123; return x.Spf &gt; y.Spf;&#125;int main() &#123; static int C, L; scanf("%d %d", &amp;C, &amp;L); for (int i = 1; i &lt;= C; i++) &#123; scanf("%d %d", &amp;cow[i].MinSPF, &amp;cow[i].MaxSPF); &#125; for (int i = 1; i &lt;= L; i++) &#123; scanf("%d %d", &amp;SPF[i].Spf, &amp;SPF[i].Cover); &#125; std::sort(cow + 1, cow + 1 + C, cmp1); std::sort(SPF + 1, SPF + 1 + L, cmp2); int ans = 0; for (int i = 1; i &lt;= C; i++) &#123; for (int j = 1; j &lt;= L; j++) &#123; if(SPF[j].Spf &lt;= cow[i].MaxSPF &amp;&amp; SPF[j].Spf &gt;= cow[i].MinSPF &amp;&amp; SPF[j].Cover) &#123; SPF[j].Cover--; ans++; break; &#125; &#125; &#125; printf("%d\n", ans); return 0;&#125;]]></content>
+    <content type="text"><![CDATA[有C头奶牛进行日光浴，第i头奶牛需要minSPF[i]到maxSPF[i]单位强度之间的阳光。 每头奶牛在日光浴前必须涂防晒霜，防晒霜有L种，涂上第i种之后，身体接收到的阳光强度就会稳定为SPF[i]，第i种防晒霜有cover[i]瓶。 求最多可以满足多少头奶牛进行日光浴。 输入格式第一行输入整数C和L。 接下来的C行，按次序每行输入一头牛的minSPF和maxSPF值,即第i行输入minSPF[i]和maxSPF[i]。 再接下来的L行，按次序每行输入一种防晒霜的SPF和cover值,即第i行输入SPF[i]和cover[i]。 每行的数据之间用空格隔开。 输出格式输出一个整数，代表最多可以满足奶牛日光浴的奶牛数目。 数据范围$1≤C,L≤2500,$$1≤minSPF≤maxSPF≤1000,$$1≤SPF≤1000$ 输入样例：1234563 23 102 51 56 24 1 输出样例：12 题目题解：做法： 将牛按最小SPF从大到小排序，将防晒霜从大到小排序 然后将防晒霜依次分配给牛，大的优先分配给大的 证明：此题证明需要用到增广路来作为理论依据，增广路中我们需要用到最短增广路 首先，我们先将此题的模型转化，此题可以转化成线与点的有关模型，牛可以转化为线，给的SPF可以转化为点，那么我们借于点和线的关系，我们就可以将其转化为一个二分图最大匹配的有关问题（不了解二分图最大匹配的可以先去学习一下匈牙利算法，此算法专门用于解决二分图最大匹配，此篇因为篇幅有限，不再阐述此算法，后面学习到的时候会专门写出来），那么转化为二分图的问题之后，我们就可以用我们的增广路性质了 增广路的定义（详细请了解有关增广路的五条结论） 假设我们此时存在增广路，那么我们来看最短的一条增广路，为了方便，我们用 $C_i$ 表示第 $i$ 头牛，用 $S_i$ 表示第 $i$ 个防晒霜。 假设我们此时选择的最短增广路是 $S_{i_0} -&gt; C_{i_1}-&gt;S_{i_2} -&gt; C_{i_3}-&gt;…-&gt;C_k $ 此时$S_{i_0}$与$C_{i_k}$均是不在匹配中的点。 我们考虑增广路径的起点 $S_{i_0}$ 可以发现： $S_{i_0} ≤ S_{i_2}$，这是因为我们每次会给每头奶牛匹配一个符合条件的尽可能大的防晒霜（为什么？ 增广路性质）（从这里我们能得到牛一定是从大到小，防晒霜一定是从大到小 以上两种依次匹配） $i_1 &gt; i_3$，如果 $i_1 &lt; i_3$，我们就能将 $c_{i_1}$ 和 $s_{i_2}$ 从增广路中删除（因为不满足最短增广路定义），此时就和我们定义的最短增广路所冲突 （从这里我们能得到该序列一定是单调的（排序可得）） 根据上面的推论，同理，我们推导后面一样可以得到 $S_{i_j} ≤ S_{i_j + 2}$ $i_j &gt; i_{j + 2}$ 所以可得 $i_{k - 2} &gt; i_k$，所以在上述做法中，我们一定会先枚举到$C_{i_k}$再枚举到$C_{i_{k - 2}}$，与 $C_{i_k}$没有匹配到任何防晒霜相矛盾（因为我们先枚举大的后枚举小的），所以上述做法一定不存在增广路径，所以上述做法得到的匹配一定是最大匹配 由此我们可以得到，一定是按牛的$MinSPF$从大到小排序，然后与防晒霜依次匹配（防晒霜也是从大到小，因为此时符合我们的最短增广路） 代码如下…. 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950//#define fre yes#include &lt;cstdio&gt;#include &lt;algorithm&gt;const int N = 2505;struct Node &#123; int MaxSPF, MinSPF;&#125; cow[N];struct Mesr &#123; int Spf, Cover;&#125; SPF[N];bool cmp1(Node x, Node y) &#123; return x.MinSPF &gt; y.MinSPF;&#125;bool cmp2(Mesr x, Mesr y) &#123; return x.Spf &gt; y.Spf;&#125;int main() &#123; static int C, L; scanf("%d %d", &amp;C, &amp;L); for (int i = 1; i &lt;= C; i++) &#123; scanf("%d %d", &amp;cow[i].MinSPF, &amp;cow[i].MaxSPF); &#125; for (int i = 1; i &lt;= L; i++) &#123; scanf("%d %d", &amp;SPF[i].Spf, &amp;SPF[i].Cover); &#125; std::sort(cow + 1, cow + 1 + C, cmp1); std::sort(SPF + 1, SPF + 1 + L, cmp2); int ans = 0; for (int i = 1; i &lt;= C; i++) &#123; for (int j = 1; j &lt;= L; j++) &#123; if(SPF[j].Spf &lt;= cow[i].MaxSPF &amp;&amp; SPF[j].Spf &gt;= cow[i].MinSPF &amp;&amp; SPF[j].Cover) &#123; SPF[j].Cover--; ans++; break; &#125; &#125; &#125; printf("%d\n", ans); return 0;&#125;]]></content>
       <categories>
         <category>OI</category>
       </categories>
@@ -21,8 +32,8 @@
       <tags>
         <tag>位运算</tag>
         <tag>快速幂</tag>
-        <tag>差分</tag>
         <tag>归并排序</tag>
+        <tag>差分</tag>
         <tag>二分</tag>
         <tag>前缀和</tag>
       </tags>
@@ -35,10 +46,10 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>归并排序</tag>
-        <tag>倍增</tag>
+        <tag>贪心</tag>
         <tag>二分</tag>
+        <tag>倍增</tag>
       </tags>
   </entry>
   <entry>
