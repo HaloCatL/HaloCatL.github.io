@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[雷达设备]]></title>
+    <url>%2F2019%2F04%2F09%2F%E9%9B%B7%E8%BE%BE%E8%AE%BE%E5%A4%87%2F</url>
+    <content type="text"><![CDATA[假设海岸是一条无限长的直线，陆地位于海岸的一侧，海洋位于另外一侧。 每个小岛都位于海洋一侧的某个点上。 雷达装置均位于海岸线上，且雷达的监测范围为$d$，当小岛与某雷达的距离不超过$d$时，该小岛可以被雷达覆盖。 我们使用笛卡尔坐标系，定义海岸线为$x$轴，海的一侧在$x$轴上方，陆地一侧在$x$轴下方。 现在给出每个小岛的具体坐标以及雷达的检测范围，请你求出能够使所有小岛都被雷达覆盖所需的最小雷达数目。 输入格式第一行输入两个整数$n$和$d$，分别代表小岛数目和雷达检测范围。 接下来$n$行，每行输入两个整数，分别代表小岛的$x,y$轴坐标。 同一行数据之间用空格隔开。 输出格式输出一个整数，代表所需的最小雷达数目，若没有解决方案则所需数目输出$“-1”​$。 数据范围$1≤n≤1000$ 输入样例：12343 21 2-3 12 1 输出样例：12 题目题解：待补…. 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748//#define fre yes#include &lt;cmath&gt;#include &lt;cstdio&gt;#include &lt;algorithm&gt;const double eps = 1e-6, INF = 1e10;const int N = 1005;struct Location &#123; double x, y;&#125; cur[N];bool cmp(Location x, Location y) &#123; return x.y &lt; y.y;&#125;int main() &#123; static int n, d; bool success = true; scanf("%d %d", &amp;n, &amp;d); for (int i = 1, x, y; i &lt;= n; i++) &#123; scanf("%d %d", &amp;x, &amp;y); if(y &gt; d) &#123; success = false; break; &#125; cur[i].x = (double)(x - sqrt(d * d - y * y)); cur[i].y = (double)(x + sqrt(d * d - y * y)); &#125; if(!success) &#123; puts("-1"); return 0; &#125; std::sort(cur + 1, cur + 1 + n, cmp); int ans = 0; double last = -INF; for (int i = 1; i &lt;= n; i++) &#123; if(cur[i].x &gt; last + eps) &#123; ans++; last = cur[i].y; &#125; &#125; printf("%d\n", ans); return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[畜栏预定]]></title>
     <url>%2F2019%2F04%2F09%2F%E7%95%9C%E6%A0%8F%E9%A2%84%E5%AE%9A%2F</url>
     <content type="text"><![CDATA[有$N$头牛在畜栏中吃草。 每个畜栏在同一时间段只能提供给一头牛吃草，所以可能会需要多个畜栏。 给定$N$头牛和每头牛开始吃草的时间$A$以及结束吃草的时间$B$，每头牛在$[A,B]$这一时间段内都会一直吃草。 当两头牛的吃草区间存在交集时（包括端点），这两头牛不能被安排在同一个畜栏吃草。 求需要的最小畜栏数目和每头牛对应的畜栏方案。 输入格式第$1$行：输入一个整数$N$。 第$2..N+1$行：第$i+1$行输入第$i$头牛的开始吃草时间$A$以及结束吃草时间$B$，数之间用空格隔开。 输出格式第$1$行：输入一个整数，代表所需最小畜栏数。 第$2..N+1$行：第$i+1$行输入第i头牛被安排到的畜栏编号，编号从$1$开始，只要方案合法即可。 数据范围$1≤N≤50000,$$1≤A,B≤1000000$ 输入样例：12345651 102 43 65 84 7 输出样例：123456412324 题目题解：做法： 将所有牛按开始吃草的时间排序 用小根堆维护当前畜栏的最后一头牛的吃草结束时间（此时一定是结束时间最晚的牛在根堆堆顶） 如果当前的牛可以安排在堆顶的畜栏中，则将其安排进去，更新结束时间，否则就新建一个畜栏 给出证明： 假设我们现在存在一种方案，使得需要的畜栏数量更少，记其需要的畜栏数量为 $m$ 考虑上述做法中，第一次新建第 $m + 1$ 个畜栏的时刻，不妨设当前处理的是第 $i$ 头牛 为了证明方便，我们先将所有牛按开始时时间从小到大进行排序，所以现在前 $m$ 个畜栏中最后一头牛的开始时间一定是小于等于第 $i$ 头牛的开始时间。 而且前 $m$ 个畜栏中最小的结束时间大于等于第 $i$ 头牛的开始时间，所以前 $m$ 个畜栏里最后一头牛的吃草区间一定都包含第 $i$ 头牛的开始时间，所以我们就找到了 $m + 1$ 个区间存在交集，所以至少需要 $m + 1​$ 个畜栏，矛盾 所以上述做法可以得到最优解，解毕 代码如下… 123456789101112131415161718192021222324252627282930313233343536373839404142434445//#define fre yes#include &lt;queue&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#include &lt;iostream&gt;#include &lt;algorithm&gt;const int N = 50005;typedef std::pair&lt;int, int&gt; PII;std::pair&lt;PII, int&gt; cows[N];int id[N];int main() &#123; static int n; scanf("%d", &amp;n); for (int i = 1, x, y; i &lt;= n; i++) &#123; scanf("%d %d", &amp;x, &amp;y); cows[i].first.first = x, cows[i].first.second = y; cows[i].second = i; &#125; std::sort(cows + 1, cows + 1 + n); std::priority_queue&lt;PII, std::vector&lt;PII&gt;, std::greater&lt;PII&gt; &gt; heap; for (int i = 1; i &lt;= n; i++) &#123; if(heap.empty() || cows[i].first.first &lt;= heap.top().first) &#123; PII stall = &#123;cows[i].first.second, heap.size()&#125;; id[cows[i].second] = stall.second; heap.push(stall); &#125; else &#123; PII stall = heap.top(); heap.pop(); stall.first = cows[i].first.second; id[cows[i].second] = stall.second; heap.push(stall); &#125; &#125; printf("%d\n", heap.size()); for (int i = 1; i &lt;= n; i++) &#123; printf("%d\n", id[i] + 1); &#125; return 0;&#125;]]></content>
@@ -32,8 +43,8 @@
       <tags>
         <tag>位运算</tag>
         <tag>快速幂</tag>
-        <tag>归并排序</tag>
         <tag>差分</tag>
+        <tag>归并排序</tag>
         <tag>二分</tag>
         <tag>前缀和</tag>
       </tags>
@@ -46,10 +57,10 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>归并排序</tag>
         <tag>贪心</tag>
-        <tag>二分</tag>
+        <tag>归并排序</tag>
         <tag>倍增</tag>
+        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
