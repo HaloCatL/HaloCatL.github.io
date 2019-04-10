@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="假设海岸是一条无限长的直线，陆地位于海岸的一侧，海洋位于另外一侧。 每个小岛都位于海洋一侧的某个点上。 雷达装置均位于海岸线上，且雷达的监测范围为$d$，当小岛与某雷达的距离不超过$d$时，该小岛可以被雷达覆盖。 我们使用笛卡尔坐标系，定义海岸线为$x$轴，海的一侧在$x$轴上方，陆地一侧在$x$轴下方。 现在给出每个小岛的具体坐标以及雷达的检测范围，请你求出能够使所有小岛都被雷达覆盖所需的最小雷">
+<meta name="description" content="假设海岸是一条无限长的直线，陆地位于海岸的一侧，海洋位于另外一侧。 每个小岛都位于海洋一侧的某个点上。 雷达装置均位于海岸线上，且雷达的监测范围为$d$，当小岛与某雷达的距离不超过$d​$时，该小岛可以被雷达覆盖。 我们使用笛卡尔坐标系，定义海岸线为$x$轴，海的一侧在$x$轴上方，陆地一侧在$x$轴下方。 现在给出每个小岛的具体坐标以及雷达的检测范围，请你求出能够使所有小岛都被雷达覆盖所需的最小">
 <meta name="keywords" content="贪心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="雷达设备">
 <meta property="og:url" content="http://yoursite.com/2019/04/09/雷达设备/index.html">
 <meta property="og:site_name" content="HaloCat_Blog">
-<meta property="og:description" content="假设海岸是一条无限长的直线，陆地位于海岸的一侧，海洋位于另外一侧。 每个小岛都位于海洋一侧的某个点上。 雷达装置均位于海岸线上，且雷达的监测范围为$d$，当小岛与某雷达的距离不超过$d$时，该小岛可以被雷达覆盖。 我们使用笛卡尔坐标系，定义海岸线为$x$轴，海的一侧在$x$轴上方，陆地一侧在$x$轴下方。 现在给出每个小岛的具体坐标以及雷达的检测范围，请你求出能够使所有小岛都被雷达覆盖所需的最小雷">
+<meta property="og:description" content="假设海岸是一条无限长的直线，陆地位于海岸的一侧，海洋位于另外一侧。 每个小岛都位于海洋一侧的某个点上。 雷达装置均位于海岸线上，且雷达的监测范围为$d$，当小岛与某雷达的距离不超过$d​$时，该小岛可以被雷达覆盖。 我们使用笛卡尔坐标系，定义海岸线为$x$轴，海的一侧在$x$轴上方，陆地一侧在$x$轴下方。 现在给出每个小岛的具体坐标以及雷达的检测范围，请你求出能够使所有小岛都被雷达覆盖所需的最小">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-09T07:41:11.999Z">
+<meta property="og:image" content="https://www.acwing.com/media/article/image/2019/02/26/1_742fce9a39-QQ%E5%9B%BE%E7%89%8720190226014010.png">
+<meta property="og:image" content="https://www.acwing.com/media/article/image/2019/02/26/1_e02b01b239-QQ%E5%9B%BE%E7%89%8720190226015741.png">
+<meta property="og:updated_time" content="2019-04-10T07:50:35.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="雷达设备">
-<meta name="twitter:description" content="假设海岸是一条无限长的直线，陆地位于海岸的一侧，海洋位于另外一侧。 每个小岛都位于海洋一侧的某个点上。 雷达装置均位于海岸线上，且雷达的监测范围为$d$，当小岛与某雷达的距离不超过$d$时，该小岛可以被雷达覆盖。 我们使用笛卡尔坐标系，定义海岸线为$x$轴，海的一侧在$x$轴上方，陆地一侧在$x$轴下方。 现在给出每个小岛的具体坐标以及雷达的检测范围，请你求出能够使所有小岛都被雷达覆盖所需的最小雷">
+<meta name="twitter:description" content="假设海岸是一条无限长的直线，陆地位于海岸的一侧，海洋位于另外一侧。 每个小岛都位于海洋一侧的某个点上。 雷达装置均位于海岸线上，且雷达的监测范围为$d$，当小岛与某雷达的距离不超过$d​$时，该小岛可以被雷达覆盖。 我们使用笛卡尔坐标系，定义海岸线为$x$轴，海的一侧在$x$轴上方，陆地一侧在$x$轴下方。 现在给出每个小岛的具体坐标以及雷达的检测范围，请你求出能够使所有小岛都被雷达覆盖所需的最小">
+<meta name="twitter:image" content="https://www.acwing.com/media/article/image/2019/02/26/1_742fce9a39-QQ%E5%9B%BE%E7%89%8720190226014010.png">
 
 
 
@@ -378,7 +381,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  476
+                  859
                 </span>
               
 
@@ -394,7 +397,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -417,7 +420,7 @@
       
         <p>假设海岸是一条无限长的直线，陆地位于海岸的一侧，海洋位于另外一侧。</p>
 <p>每个小岛都位于海洋一侧的某个点上。</p>
-<p>雷达装置均位于海岸线上，且雷达的监测范围为$d$，当小岛与某雷达的距离不超过$d$时，该小岛可以被雷达覆盖。</p>
+<p>雷达装置均位于海岸线上，且雷达的监测范围为$d$，当小岛与某雷达的距离不超过$d​$时，该小岛可以被雷达覆盖。</p>
 <p>我们使用笛卡尔坐标系，定义海岸线为$x$轴，海的一侧在$x$轴上方，陆地一侧在$x$轴下方。</p>
 <p>现在给出每个小岛的具体坐标以及雷达的检测范围，请你求出能够使所有小岛都被雷达覆盖所需的最小雷达数目。</p>
 <h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入两个整数$n$和$d$，分别代表小岛数目和雷达检测范围。</p>
@@ -427,7 +430,30 @@
 <h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>$1≤n≤1000$</p>
 <h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3 2</span><br><span class="line">1 2</span><br><span class="line">-3 1</span><br><span class="line">2 1</span><br></pre></td></tr></table></figure>
 <h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
-<h5 id="题目题解："><a href="#题目题解：" class="headerlink" title="题目题解："></a>题目题解：</h5><p>待补….</p>
+<h5 id="题目题解："><a href="#题目题解：" class="headerlink" title="题目题解："></a>题目题解：</h5><h5 id="做法："><a href="#做法：" class="headerlink" title="做法："></a>做法：</h5><p>此题我们先将一个二维的单点坐标转成一维范围区间，如何转？ 通过下面方式</p>
+<p><img src="https://www.acwing.com/media/article/image/2019/02/26/1_742fce9a39-QQ%E5%9B%BE%E7%89%8720190226014010.png" alt=""></p>
+<p>根据此我们可以知道</p>
+<ul>
+<li>$a = x -\sqrt{(d^2 - y^2)}$</li>
+<li>$b = x + \sqrt{(d^2 - y^2)}$ </li>
+</ul>
+<p>那么转化成区间问题后，我们就可以给出做法了</p>
+<ul>
+<li>将所有区间按右端点从小到大排序</li>
+<li>依次考虑每个区间<ul>
+<li>如果当前区间包含最后一个选择的点，则直接跳过</li>
+<li>如果当前区间不包含最后一个选择的点，则在当前区间的右端点的位置选一个新的点</li>
+</ul>
+</li>
+</ul>
+<h5 id="证明："><a href="#证明：" class="headerlink" title="证明："></a>证明：</h5><p>首先上述做法一定可以保证所有区间都至少包含一个点。</p>
+<p>然后我们再证明这样选出的点的数量是最少的，不妨设选出的点数是 $m$：</p>
+<ul>
+<li>按照上述做法，我们选择的点都是某个区间的右端点，而且由于区间按右端点排好序了，所以我们选择的点也是排好序的；</li>
+<li>只有在当前区间和上一个点所对应的区间是没有交集时，我们才会选择一个新点，所以所有选出的点所对应的区间是如下图所示的情况，两两之间没有交集。</li>
+</ul>
+<p><img src="https://www.acwing.com/media/article/image/2019/02/26/1_e02b01b239-QQ%E5%9B%BE%E7%89%8720190226015741.png" alt=""></p>
+<p>所以我们找到了 $m$ 个两两之间没有交集的区间，因此我们至少需要选 $m$ 个点。而且通过上述做法，我们可以只选 $m$ 个点。因此最优解就是 $m$。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#define fre yes</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-6</span>, INF = <span class="number">1e10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1005</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Location</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> x, y;</span><br><span class="line">&#125; cur[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(Location x, Location y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x.y &lt; y.y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> n, d; <span class="keyword">bool</span> success = <span class="literal">true</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;d);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, x, y; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;x, &amp;y);</span><br><span class="line">        <span class="keyword">if</span>(y &gt; d) &#123;</span><br><span class="line">            success = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cur[i].x = (<span class="keyword">double</span>)(x - <span class="built_in">sqrt</span>(d * d - y * y));</span><br><span class="line">        cur[i].y = (<span class="keyword">double</span>)(x + <span class="built_in">sqrt</span>(d * d - y * y));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!success) &#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::sort(cur + <span class="number">1</span>, cur + <span class="number">1</span> + n, cmp);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>; <span class="keyword">double</span> last = -INF;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(cur[i].x &gt; last + eps) &#123;</span><br><span class="line">            ans++;</span><br><span class="line">            last = cur[i].y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -604,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入格式"><span class="nav-number">1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出格式"><span class="nav-number">2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据范围"><span class="nav-number">3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入样例："><span class="nav-number">4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出样例："><span class="nav-number">5.</span> <span class="nav-text">输出样例：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#题目题解："><span class="nav-number">5.1.</span> <span class="nav-text">题目题解：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入格式"><span class="nav-number">1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出格式"><span class="nav-number">2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据范围"><span class="nav-number">3.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入样例："><span class="nav-number">4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出样例："><span class="nav-number">5.</span> <span class="nav-text">输出样例：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#题目题解："><span class="nav-number">5.1.</span> <span class="nav-text">题目题解：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#做法："><span class="nav-number">5.2.</span> <span class="nav-text">做法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#证明："><span class="nav-number">5.3.</span> <span class="nav-text">证明：</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -638,7 +664,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.4k</span>
+    <span title="Site words total count">25.8k</span>
   
 </div>
 
