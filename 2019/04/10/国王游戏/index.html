@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="HaloCat_Blog">
 <meta property="og:description" content="恰逢 H 国国庆,国王邀请 n 位大臣来玩一个有奖游戏。 首先,他让每个大臣在左、右手上面分别写下一个整数,国王自己也在左、右手上各写一个整数。 然后,让这 n 位大臣排成一排,国王站在队伍的最前面。 排好队后,所有的大臣都会获得国王奖赏的若干金币,每位大臣获得的金币数分别是: 排在该大臣前面的所有人的左手上的数的乘积除以他自己右手上的数,然后向下取整得到的结果。 国王不希望某一个大臣获得特别多的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-12T06:35:39.699Z">
+<meta property="og:updated_time" content="2019-04-12T08:44:02.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="国王游戏">
 <meta name="twitter:description" content="恰逢 H 国国庆,国王邀请 n 位大臣来玩一个有奖游戏。 首先,他让每个大臣在左、右手上面分别写下一个整数,国王自己也在左、右手上各写一个整数。 然后,让这 n 位大臣排成一排,国王站在队伍的最前面。 排好队后,所有的大臣都会获得国王奖赏的若干金币,每位大臣获得的金币数分别是: 排在该大臣前面的所有人的左手上的数的乘积除以他自己右手上的数,然后向下取整得到的结果。 国王不希望某一个大臣获得特别多的">
@@ -435,10 +435,10 @@
 <li>先将每个大臣按左手乘右手的顺序从小到大排序</li>
 <li>然后用题面所给的方法计算，每次取最大值即可，那便是最优结果</li>
 </ul>
-<h5 id="证明："><a href="#证明：" class="headerlink" title="证明："></a>证明：</h5><p>假设我们有一段未处理过的数列 ${C_n}$ ,并设这个数列中每一个位置都有两个值，分别对应左手右手 即 $A_i B_i$ 与 $A_{i + 1}B_{i+1}$ ，那么对于这个数列 ${C_n}$ 一定会有一个连续的两个数满足 $A_i<em>B_i$ &gt; $A_{i + 1} </em> B_{i + 1}$</p>
+<h5 id="证明："><a href="#证明：" class="headerlink" title="证明："></a>证明：</h5><p>假设我们有一段未处理过的数列 ${C_n}​$ ,并设这个数列中每一个位置都有两个值，分别对应左手右手 即 $A_i B_i​$ 与 $A_{i + 1}B_{i+1}​$ ，那么对于这个数列 ${C_n}​$ 一定会有一个连续的两个数满足 $A_i<em>B_i​$ &gt; $A_{i + 1} </em> B_{i + 1}​$</p>
 <p>现在将两个数的位置交换一下，我们看看最后能得到的结果相比于之前是怎么样的。</p>
 <p><strong>交换前：</strong> 第$i$个人是 $\frac{\prod ^{i - 1}_{j = 0} A_j}{B_i}$ 第$i + 1$个人是 $\frac{A_i * \prod ^{i - 1}_{j = 0} A_j}{B_{i + 1}}$</p>
-<p><strong>交换后：</strong> 第$i$个人是 $\frac{\prod ^{i - 1}_{j = 0} A_j}{B_{i + 1}}$ 第$i + 1$个人是 $\frac{A_{i + 1} * \prod ^{i - 1}_{j = 0} A_j}{B_i}​$</p>
+<p><strong>交换后：</strong> 第$i​$个人是 $\frac{\prod ^{i - 1}_{j = 0} A_j}{B_{i + 1}}​$ 第$i + 1​$个人是 $\frac{A_{i + 1} * \prod ^{i - 1}_{j = 0} A_j}{B_i}​$</p>
 <p>我们将交换前后的式子全部都除一个$\prod ^{i - 1}_{j = 0} A_j$，然后再乘一个$B_i * B_{i + 1}$ 可得</p>
 <div class="table-container">
 <table>
